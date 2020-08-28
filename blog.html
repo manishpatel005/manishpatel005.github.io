@@ -7,7 +7,12 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <style>
 body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+span[id^="more"] {display: none;}
 </style>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
 <body class="w3-light-grey">
 
 <!-- w3-content defines a container for fixed size centered content, 
@@ -27,18 +32,57 @@ and is wrapped around the whole page content, except for the footer in this exam
 <div class="w3-col l8 s12">
   <!-- Blog entry -->
   <div class="w3-card-4 w3-margin w3-white">
-    <img src="/w3images/woods.jpg" alt="Nature" style="width:100%">
+    <img src="/blog_images/ir0_seo.jpeg" alt="SE" style="width:100%">
     <div class="w3-container">
-      <h3><b>Information Storage and Retrieval-1</b></h3>
-      <h5>TF-ID, <span class="w3-opacity">July 04, 2020</span></h5>
+      <h3><b>Information Storage and Retrieval-0</b></h3>
+      <h5>Why this topic ?, <span class="w3-opacity">August 04, 2020</span></h5>
     </div>
 
     <div class="w3-container">
-      <p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed
-        tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
+        <p>Two years ago, I had no idea of this topic. <br><br>
+            One day, I got to know that a lot of people are dying to take this 
+            Course called Information Retrieval. I thought to myself-let's give
+            it a try and see what is this heck all about and if I don't like
+            it, I can switch in a week. The professor of this course was 
+            Dr. Caverlee.
+            <span id="dots_0">...</span><span id="more_0"><br><br> 
+            One week into this course, and I fell in love with it! I remember 
+            our first assignment-SEO Optimization. We were given a random 
+            term-sajfd hfafbjhd-that was not present on any 
+            search engine and we had to make webpages or do anything that was
+            ethical so that when anyone searched this random term, our pages 
+            should show up as the result of the query. The page that will be
+            on top will be awarded win bonus points. People went crazy. Some
+            build websites, some made youtube videos, others made github repos. 
+            One person made a Linked profile of person named sajfd hfafbjhd. 
+            Another claimed to be scientist and wrote a research of this phenomenon
+            called sajfd hfafbjhd. I made webpages, added references to this term
+            in all social media pages. I also remember I made a business page for a mall
+            with this term and asked my friends to like it. <br><br>
+           
+            Believe it or not, it started showing up on top of the results. I 
+            need to give credits to my roommate Nikhil who made a school with 
+            this name in the middle of a lake. The fun part is when one day my 
+            friend Das was booking an Uber he found that this mall was being 
+            shown as one of the pickup points. Another fun thing happend was 
+            when one stranger rated my business and said- Amazing mall! 
+            I was like- No bro! There is no such mall. I decided to delete it
+            later on. <br><br>
+						
+            <img src="/blog_images/sajfd.png" alt="mall_review" style="width: 100%">
+            <br><br>
+						I learned so much from this course that I believe it has become one of
+            my major interests and want to now share it with people. I also enjoy 
+            writing, so I thought let me have two aims with one arrow. Please enjoy 
+            my blog and feel free to drop any suggestions. <br><br>
+            Thanks! 
+            <br><br>
+            Image credit: <a href="https://www.re-work.co/">rework</a>
+            </span>
+        </p>
       <div class="w3-row">
         <div class="w3-col m8 s12">
-          <p><button class="w3-button w3-padding-large w3-white w3-border"><b>READ MORE »</b></button></p>
+          <p><button class="w3-button w3-padding-large w3-white w3-border" onclick="expandRead(this)" id="0"><b>READ MORE »</b></button></p>
         </div>
         <div class="w3-col m4 w3-hide-small">
           <p><span class="w3-padding-large w3-right"><b>Comments  </b> <span class="w3-tag">0</span></span></p>
@@ -50,15 +94,140 @@ and is wrapped around the whole page content, except for the footer in this exam
 
   <!-- Blog entry -->
   <div class="w3-card-4 w3-margin w3-white">
-  <img src="/w3images/bridge.jpg" alt="Norway" style="width:100%">
+  <img src="/blog_images/ir_1_shakespeare.jpg" alt="Norway" style="width:100%">
     <div class="w3-container">
-      <h3><b>BLOG ENTRY</b></h3>
-      <h5>Title description, <span class="w3-opacity">April 2, 2014</span></h5>
+      <h3><b>Information Storage and Retrieval-1</b></h3>
+      <h5>Boolean Retrieval, <span class="w3-opacity">August 05, 2020</span></h5>
     </div>
 
     <div class="w3-container">
-      <p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed
-        tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
+    	<p>
+				
+      	In today's post, we will see an example of information retrieval
+					-Boolean Retrieval. Suppose we want to find which plays of Shakespeare from<i> 
+					Shakespeare's Collected Works</i>, contain the words Brutus AND Caesar
+					AND NOT Calpurnia. There are multiple ways to do it
+					<span id="dots_1">...</span><span id="more_1">
+					<br><br> 
+					One way is to search every document(using computers) and note down which documents
+					contains Brutus and Caesar but not Calpurnia. 
+					
+					<img src="/blog_images/term_incidence.png" alt="term_incidence" style="width: 100%">		
+					<tt>Fig1. A term-document incidence matrix</tt><br><br>
+					
+					Another way is to index the documents in advance and create a matrix
+					as shown in the Fig 1. where for each play(column) we mark the cells 1 
+					if it contains the word(row). It is also called term-document 
+					incidence matrix. <br><br>
+					To answer the query: Brutus AND Caesar AND NOT Calpurnia, we take vectors
+					of the first two terms and AND it with the complement of the last term i.e.
+					<code>110100 and 110111 and 101111 = 100100 </code>. Thus, the answer 
+					is <i>Antony and Cleopatra and Hamlet</i>. Since this model contains 0 and 1 for
+					occurence or abscene of a word, it is called Boolean retrieval. The 
+					problem with the above solution is that the matrix becomes too big for
+					computer's memory for large corpus of documents containing distinct
+					terms. <br><br>
+				If we look closely we find that the matrix is sparse i.e only a small 
+				subset of words are present in a document. Thus an effective way to
+				store the presence of words in documents is to record only 1s and create
+				an inverted index.
+				
+				<img src="/blog_images/inverted_index.png" alt="inverted_index" style="width: 100%" >
+				
+				<tt>Fig2. An inverted index with a collection of words on left
+							side(called dictionary) and a list of documents in which the term
+							occurs(called postings).</tt><br><br>
+				Fig2. shows an inverted index for the terms made by creating a list of the
+				documents in which the term occurs. Now for the query: Brutus AND Caesar
+				AND NOT Calpurnia, we locate Brutus, Caesar, and Calpurnia and retrieve
+				their postings and find the intersection between first two and then remove
+				the words that is present in Calpurnia. That is from the intersection of
+				postings of Brutus and Caesar we get <code>1,2,4</code>. If we remove
+				<code>4</code> from it, we get the result as <code>1,2</code> which is 
+				<i>Antony and Cleopatra and Hamlet</i>. <br><br>
+				Often on Leetcode and other sites, we find problems such as intersection of
+				two lists or k lists. This is a perfect instance where rubber meets the
+				road. For e.g. if you have two sorted lists 
+				of roughly equal size and want to find the common elements between 
+				them, the best approach woulld be to use two pointers. But
+				if one of them is very large, then it would make more sense to apply 
+				binary search for the elements present in shorter list. <br><br>
+				Now if you have multiple lists of varying size then you can either 
+				sort them and start by finding common with the two smallest lists and
+				then its result with next smallest and so on, or you can handle two
+				lists at a time and form a hierarchical way to find the intersection.
+				The best approach usually is the one which tends to be most simple
+				and handles the constraints well. <br><br>
+				References- <a href="https://nlp.stanford.edu/IR-book/html/htmledition/an-example-information-retrieval-problem-1.html">
+				Manning, Raghavan, Schultze</a>  <br>
+				Image Credits- <a href="https://www.shakespeare.org.uk/visit/shakespeares-birthplace/">shakespeare birthplace trust</a>
+				</span>
+      </p>
+      <div class="w3-row">
+        <div class="w3-col m8 s12">
+          <p><button class="w3-button w3-padding-large w3-white w3-border" onclick="expandRead(this)" id="1"><b>READ MORE »</b></button></p>
+        </div>
+        <div class="w3-col m4 w3-hide-small">
+          <p><span class="w3-padding-large w3-right"><b>Comments  </b> <span class="w3-badge">2</span></span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Blog entry -->
+  <div class="w3-card-4 w3-margin w3-white">
+  <img src="/w3images/bridge.jpg" alt="Norway" style="width:100%">
+    <div class="w3-container">
+      <h3><b>Information Storage and Retrieval-2</b></h3>
+      <h5>TF-IDF, Vector Space and BM25 <span class="w3-opacity">April 2, 2014</span></h5>
+    </div>
+
+    <div class="w3-container">
+      <p>
+				In the previous post, we saw that intersection of postings resulted in
+				list of common postings for the query. <i>Does it matter in which order
+				should we show the result to the user?</i> It turns out that it does matter.
+				<img src="/blog_images/google_ctr.png" alt="term_incidence" style="width: 100%">
+				<tt>Fig1. Ranking of webpages vs CTR</tt>
+				<br><br>
+				We can see in the above figure that the site that is ranked 1 has CTR (click-through rate)
+				of 34% while the next site that is ranked 2 has CTR of 17%. This exponential decrease
+				shows that 60% people tend to find their information need satisfied from first three 
+				sites. In another study it has been found that the order of presentation matter i.e
+				if the ranked 1 site(most relevant) is swapped with ranked 2 site(less relevant), then
+				CTR of rank2 increases. Hence it is important to factor in the ranks when retrieving 
+				the documents for a given query. <br><br>
+				The next logical step to rank two or more documents for a free-form query such as we type
+				in search engines (as opposed to the boolean query of last post) is to find the number
+				of occurences of the query term <i>t</i> in the document <i>d</i>. To calculate the score/rank
+				we find the frequency of all terms of query in the documents, sum them up
+				and rank them in decreasing order. This weighting is called <i>term frequency</i>.
+				<img src="/blog_images/shakespeare_count_terms.png" alt="inverted_index" style="width: 100%" >
+				
+				<tt>Fig2. Frequency of the terms in the documents</tt><br><br>
+				
+				Figure 2 shows the number of occurences of the terms (raw term frequency) 
+				in the documents. But the raw term frequency has problem that relevancy does not increase
+				with term frequency i.e. a document with tf=10 is more relevant than a document with tf=1
+				but not 10 times more relevant. Thus we can solve this problem by taking logarithm of <i>tf</i>
+				for term <i>t</i> in document <i>d</i>:
+				$$w_{t,d}= 1+log_{10}tf$$ 
+				Another problem is that all terms are considered equally important
+				when assessing the relevancy. However, this is not true. For instance in a set of documents
+				from law industry, the term <i>legal</i> will be in almost all the documents. So we need 
+				to attenuate the occurence of frequent terms and increase weight for rare terms. This 
+				can be done by using <i>document frequency</i> which is defined as the number of documents
+				that contain the term <i>t</i>. To weight <i>tf</i> we will use <i>inverse document frequency</i>
+				which is defined as:
+				$$ idf_t= \log \frac{N}{df_t} $$
+				where N is the number of documents in the collection. This brings us an important milestone in IR
+				which is tf-idf weighting and defined as:
+				$$ w_{t,d}= (1+log_{10}tf) * \log \frac{N}{df_t} $$
+				tf-idf weight increses with the number of occurences within a document(term-frequency) and 
+				increases with the rarity of the term in the collection (inverse document frequency).
+				
+				
+			</p>
       <div class="w3-row">
         <div class="w3-col m8 s12">
           <p><button class="w3-button w3-padding-large w3-white w3-border"><b>READ MORE »</b></button></p>
@@ -159,6 +328,30 @@ and is wrapped around the whole page content, except for the footer in this exam
   <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
 </footer>
 
+<script>
+function expandRead(button) {
+	var id = button.id;
+	var dots_id = 'dots_' + id;
+	var more_id = 'more_' + id;
+	
+	
+  var dots = document.getElementById(dots_id);
+  var moreText = document.getElementById(more_id);
+  var btnText = document.getElementById(id);
+	
+	
+  if (dots.style.display === "none") {
+    dots.style.display = "inline";
+    btnText.innerHTML = "Read more"; 
+    moreText.style.display = "none";
+		
+  } else {
+    dots.style.display = "none";
+    btnText.innerHTML = "Read less"; 
+    moreText.style.display = "inline";
+	}
+}
+</script>
 </body>
 </html>
 
