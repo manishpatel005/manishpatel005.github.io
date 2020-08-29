@@ -22,7 +22,7 @@ and is wrapped around the whole page content, except for the footer in this exam
 
 <!-- Header -->
 <header class="w3-container w3-center w3-padding-32"> 
-  <h1><b>The AI Machinist</b></h1>
+  <h1><b>The Anvishik</b></h1>
   <!--<p>Welcome to the blog of <span class="w3-tag">Manish</span></p>-->
 </header>
 
@@ -195,24 +195,27 @@ and is wrapped around the whole page content, except for the footer in this exam
 
   <!-- Blog entry -->
   <div class="w3-card-4 w3-margin w3-white">
-  <img src="/w3images/bridge.jpg" alt="Norway" style="width:100%">
+  <img src="/blog_images/TF-IDF.png" alt="Norway" style="width:100%">
     <div class="w3-container">
       <h3><b>Information Storage and Retrieval-2</b></h3>
-      <h5>TF-IDF, Vector Space and BM25 <span class="w3-opacity">April 2, 2014</span></h5>
+      <h5>TF-IDF <span class="w3-opacity">August 20, 2020</span></h5>
     </div>
 
     <div class="w3-container">
       <p>
 				In the previous post, we saw that intersection of postings resulted in
 				list of common postings for the query. <i>Does it matter in which order
-				should we show the result to the user?</i> It turns out that it does matter.
+				should we show the result to the user?</i>
+				<span id="dots_2">...</span><span id="more_2">
+				<br><br>
+				It turns out that it does matter.
 				<img src="/blog_images/google_ctr.png" alt="term_incidence" style="width: 100%">
 				<tt>Fig1. Ranking of webpages vs CTR</tt>
 				<br><br>
 				We can see in the above figure that the site that is ranked 1 has CTR (click-through rate)
 				of 34% while the next site that is ranked 2 has CTR of 17%. This exponential decrease
 				shows that 60% people tend to find their information need satisfied from first three 
-				sites. In another study it has been found that the order of presentation matter i.e
+				sites. In another study it has been found that the order of relevance matter i.e
 				if the ranked 1 site(most relevant) is swapped with ranked 2 site(less relevant), then
 				CTR of rank2 increases. Hence it is important to factor in the ranks when retrieving 
 				the documents for a given query. <br><br>
@@ -245,11 +248,19 @@ and is wrapped around the whole page content, except for the footer in this exam
 				tf-idf weight increses with the number of occurences within a document(term-frequency) and 
 				increases with the rarity of the term in the collection (inverse document frequency).
 				
+				<img src="/blog_images/tf_idf_weights.png" alt="inverted_index" style="width: 100%" >
 				
+				<tt>Fig3. tf-idf weights for the terms in the documents</tt><br><br>
+				For our initial query of:<i>Brutus and Caesar but not Calpurnia</i>, the score for
+				<i>Anthony and Cleopatra</i> will be <code>1.21 + 8.59=9.80</code> while the score for
+				<i>Hamlet</i> will be <code>1.0+1.51=2.51</code>. Thus,<i>Anthony and Cleopatra</i>
+				is more relevant for the query and should be displayed above <i>Hamlet</i>.
+
+				</span>
 			</p>
       <div class="w3-row">
         <div class="w3-col m8 s12">
-          <p><button class="w3-button w3-padding-large w3-white w3-border"><b>READ MORE »</b></button></p>
+          <p><button class="w3-button w3-padding-large w3-white w3-border" onclick="expandRead(this)" id="2"><b>READ MORE »</b></button></p>
         </div>
         <div class="w3-col m4 w3-hide-small">
           <p><span class="w3-padding-large w3-right"><b>Comments  </b> <span class="w3-badge">2</span></span></p>
@@ -262,8 +273,8 @@ and is wrapped around the whole page content, except for the footer in this exam
   <div class="w3-card-4 w3-margin w3-white">
   <img src="/blog_images/ir_1_shakespeare.jpg" alt="Norway" style="width:100%">
     <div class="w3-container">
-      <h3><b>Information Storage and Retrieval-1</b></h3>
-      <h5>Boolean Retrieval, <span class="w3-opacity">August 05, 2020</span></h5>
+      <h3><b>Information Storage and Retrieval-3</b></h3>
+      <h5>Vector Space and BM25 <span class="w3-opacity">August 21, 2020</span></h5>
     </div>
 
     <div class="w3-container">
@@ -351,20 +362,29 @@ and is wrapped around the whole page content, except for the footer in this exam
     <div class="w3-container w3-white">
       <h4><b>Manish Patel</b></h4>
       <p>Howdy!<br>
-       I am a researcher in Information Storage and Retrieval, NLU, and Image Segmentation at Texas A&M University (US). 
+       I am a recent grad from Texas A&M University where I worked in Information
+				Storage and Retrieval, NLU, and Image Segmentation.   
        I have interned in Google Search team (Mountain View, US) and worked in C-DOT (New Delhi, India) as Research Engineer. 
        I love solving challenging problems in the field of algorithm design and have 5+ years of experience in algorithm design and coding. 
       </p>
-      <p>Having brought-up in various parts of India, I enjoy traveling to new places and making new friends. 
-      In my free time, I love reading English classics and playing badminton. Some of my favorite books are - Anna Karenina, The Count of Monte Cristo, 
-      The Picture of Dorian Gray, 1984, Les Miserables, Karmabhoomi, The Art of War, Great Expectations, The Odyssey etc. In badminton, my favorite players are-
-      Lee Chong Wei, Lin Dan(sad to hear his retirement), Kento Momota, PV Sindu and Victor Axelson.  
+      <p>Having brought-up in various parts of India, I enjoy traveling to new
+				places and making new friends. In my free time, I love reading English
+				classics,particulary realist fiction, and playing badminton. Some of 
+				my favorite books are - Anna Karenina, The Count of Monte Cristo, The
+				Picture of Dorian Gray, 1984, Les Miserables, Karmabhoomi, The Art of
+				War, Great Expectations, The Odyssey etc. In badminton, my favorite players are-
+      	Lee Chong Wei, Lin Dan(sad to hear his retirement), Kento Momota, 
+				PV Sindu and Victor Axelson.  
       </p>
       <p>
-      The name of this blog --AI Machinist-- means a person or craftsmen who is skilled in the use of Machine tools such as Neural Networks, SVM, Regression etc. 
+      The name of this blog --The Anvikshik-- comes from a Sanskrit word Anviskhiki which roughly means the science of searching whether
+			inwards(spiritual) or outwards(reasoning/logic). Since my interests lie in the 
+			field of information retrieval, I couldn't find a better word than this to describe the blog.
+			My intention of creating this blog is to share my enthusiasm of this niche domain and encourage people to generate
+      new ideas to solve the challenging problems of today.
+			<!--refers to means a person or craftsmen who is skilled in the use of Machine tools such as Neural Networks, SVM, Regression etc. 
       Although dictionaries have defined only the word machinist, I heard the term once used by someone but unfortunately could not remember it. I dedicate it to the
-      unknown soul. My intention of creating this blog is to bring the skills and knowledge that I have acquired to the entire world and empower them to generate
-      new ideas to solve the challenging problems of today. I hope you may find this useful.  
+      unknown soul. -->  
       </p>
     </div>
   </div><hr>
