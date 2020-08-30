@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: /
+
+Sitemap: https://manishpatel005.github.io/sitemap.xml
+
