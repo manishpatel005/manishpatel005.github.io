@@ -22,7 +22,7 @@ and is wrapped around the whole page content, except for the footer in this exam
 
 <!-- Header -->
 <header class="w3-container w3-center w3-padding-32"> 
-  <h1><b>The Anvishik</b></h1>
+  <h1><b>The Anvikshik</b></h1>
   <!--<p>Welcome to the blog of <span class="w3-tag">Manish</span></p>-->
 </header>
 
@@ -116,11 +116,11 @@ and is wrapped around the whole page content, except for the footer in this exam
       	In today's post, we will see an example of information retrieval
 					-Boolean Retrieval. Suppose we want to find which plays of Shakespeare from<i> 
 					Shakespeare's Collected Works</i>, contain the words Brutus AND Caesar
-					AND NOT Calpurnia. There are multiple ways to do it
-					<span id="dots_1">...</span><span id="more_1">
-					<br><br> 
+					AND NOT Calpurnia. There are multiple ways to do it.
 					One way is to search every document(using computers) and note down which documents
 					contains Brutus and Caesar but not Calpurnia. 
+					<span id="dots_1">...</span><span id="more_1">
+					<br><br> 
 					
 					<img src="/blog_images/term_incidence.png" alt="term_incidence" style="width: 100%">		
 					<tt>Fig1. A term-document incidence matrix</tt><br><br>
@@ -205,14 +205,13 @@ and is wrapped around the whole page content, except for the footer in this exam
       <p>
 				In the previous post, we saw that intersection of postings resulted in
 				list of common postings for the query. <i>Does it matter in which order
-				should we show the result to the user?</i>
+				should we show the result to the user?</i> It turns out that it does matter.
 				<span id="dots_2">...</span><span id="more_2">
 				<br><br>
-				It turns out that it does matter.
 				<img src="/blog_images/google_ctr.png" alt="term_incidence" style="width: 100%">
 				<tt>Fig1. Ranking of webpages vs CTR</tt>
 				<br><br>
-				We can see in the above figure that the site that is ranked 1 has CTR (click-through rate)
+				We can see in the figure 1 that the site that is ranked 1 has CTR (click-through rate)
 				of 34% while the next site that is ranked 2 has CTR of 17%. This exponential decrease
 				shows that 60% people tend to find their information need satisfied from first three 
 				sites. In another study it has been found that the order of relevance matter i.e
@@ -249,13 +248,17 @@ and is wrapped around the whole page content, except for the footer in this exam
 				increases with the rarity of the term in the collection (inverse document frequency).
 				
 				<img src="/blog_images/tf_idf_weights.png" alt="inverted_index" style="width: 100%" >
-				
 				<tt>Fig3. tf-idf weights for the terms in the documents</tt><br><br>
+				
 				For our initial query of:<i>Brutus and Caesar but not Calpurnia</i>, the score for
 				<i>Anthony and Cleopatra</i> will be <code>1.21 + 8.59=9.80</code> while the score for
 				<i>Hamlet</i> will be <code>1.0+1.51=2.51</code>. Thus,<i>Anthony and Cleopatra</i>
-				is more relevant for the query and should be displayed above <i>Hamlet</i>.
-
+				is more relevant for the query and should be displayed above <i>Hamlet</i>. <br><br>
+				
+				Image Credits for ranking- <a href="https://www.sistrix.com/blog/why-almost-everything-you-knew-about-google-ctr-is-no-longer-valid/">Sistrix</a> <br>
+				Image Credits for shakespeare term matrix- <a href="https://people.engr.tamu.edu/caverlee/index.html#teaching">Prof. Cav</a><br>
+				Image Credits for title figure- <a href="https://www.seobility.net/en/wiki/TF*IDF">Seobility</a>
+				
 				</span>
 			</p>
       <div class="w3-row">
@@ -263,90 +266,100 @@ and is wrapped around the whole page content, except for the footer in this exam
           <p><button class="w3-button w3-padding-large w3-white w3-border" onclick="expandRead(this)" id="2"><b>READ MORE »</b></button></p>
         </div>
         <div class="w3-col m4 w3-hide-small">
-          <p><span class="w3-padding-large w3-right"><b>Comments  </b> <span class="w3-badge">2</span></span></p>
+          <p><button class="w3-button w3-padding-large w3-border w3-right" onclick="expandComments(this)" id="2"><b>Comments  </b></button></p>
         </div>
       </div>
+			<div class="w3-container utterances"  id="comments_2" style="display:none;">
+					<script src="https://utteranc.es/client.js"
+        	repo="manishpatel005/manishpatel005.github.io"
+        	issue-term="pathname"
+        	theme="github-light"
+        	crossorigin="anonymous"
+        	async>
+					</script>
+       </div>
     </div>
   </div>
 	
 	 <!-- Blog entry -->
   <div class="w3-card-4 w3-margin w3-white">
-  <img src="/blog_images/ir_1_shakespeare.jpg" alt="Norway" style="width:100%">
+  <img src="/blog_images/ir_3_vs.jpg" alt="Vector in Space" style="width:100%">
     <div class="w3-container">
       <h3><b>Information Storage and Retrieval-3</b></h3>
-      <h5>Vector Space and BM25 <span class="w3-opacity">August 21, 2020</span></h5>
+      <h5>Vector Space<span class="w3-opacity">August 21, 2020</span></h5>
     </div>
 
     <div class="w3-container">
     	<p>
 				
-      	In today's post, we will see an example of information retrieval
-					-Boolean Retrieval. Suppose we want to find which plays of Shakespeare from<i> 
-					Shakespeare's Collected Works</i>, contain the words Brutus AND Caesar
-					AND NOT Calpurnia. There are multiple ways to do it
-					<span id="dots_1">...</span><span id="more_1">
-					<br><br> 
-					One way is to search every document(using computers) and note down which documents
-					contains Brutus and Caesar but not Calpurnia. 
-					
-					<img src="/blog_images/term_incidence.png" alt="term_incidence" style="width: 100%">		
-					<tt>Fig1. A term-document incidence matrix</tt><br><br>
-					
-					Another way is to index the documents in advance and create a matrix
-					as shown in the Fig 1. where for each play(column) we mark the cells 1 
-					if it contains the word(row). It is also called term-document 
-					incidence matrix. <br><br>
-					To answer the query: Brutus AND Caesar AND NOT Calpurnia, we take vectors
-					of the first two terms and AND it with the complement of the last term i.e.
-					<code>110100 and 110111 and 101111 = 100100 </code>. Thus, the answer 
-					is <i>Antony and Cleopatra and Hamlet</i>. Since this model contains 0 and 1 for
-					occurence or abscene of a word, it is called Boolean retrieval. The 
-					problem with the above solution is that the matrix becomes too big for
-					computer's memory for large corpus of documents containing distinct
-					terms. <br><br>
-				If we look closely we find that the matrix is sparse i.e only a small 
-				subset of words are present in a document. Thus an effective way to
-				store the presence of words in documents is to record only 1s and create
-				an inverted index.
+      	In the last post, we saw how to calculate the tf-idf weights for the terms
+				the documents. Today, we will see how we can use it in a different way. <br><br>
 				
-				<img src="/blog_images/inverted_index.png" alt="inverted_index" style="width: 100%" >
+				<b>Gerald Salton</b>, the father of information retrieval introduced the concept
+				of vector space where each document can be treated as a vector of 
+				tf-idf weights \( \in R^{|V|} \) thus leading to a |V| dimensional real-valued
+				vector space. Then terms can be treated as axes and documents as vector in this 
+				vector space. <span id="dots_3">...</span><span id="more_3">
 				
-				<tt>Fig2. An inverted index with a collection of words on left
-							side(called dictionary) and a list of documents in which the term
-							occurs(called postings).</tt><br><br>
-				Fig2. shows an inverted index for the terms made by creating a list of the
-				documents in which the term occurs. Now for the query: Brutus AND Caesar
-				AND NOT Calpurnia, we locate Brutus, Caesar, and Calpurnia and retrieve
-				their postings and find the intersection between first two and then remove
-				the words that is present in Calpurnia. That is from the intersection of
-				postings of Brutus and Caesar we get <code>1,2,4</code>. If we remove
-				<code>4</code> from it, we get the result as <code>1,2</code> which is 
-				<i>Antony and Cleopatra and Hamlet</i>. <br><br>
-				Often on Leetcode and other sites, we find problems such as intersection of
-				two lists or k lists. This is a perfect instance where rubber meets the
-				road. For e.g. if you have two sorted lists 
-				of roughly equal size and want to find the common elements between 
-				them, the best approach woulld be to use two pointers. But
-				if one of them is very large, then it would make more sense to apply 
-				binary search for the elements present in shorter list. <br><br>
-				Now if you have multiple lists of varying size then you can either 
-				sort them and start by finding common with the two smallest lists and
-				then its result with next smallest and so on, or you can handle two
-				lists at a time and form a hierarchical way to find the intersection.
-				The best approach usually is the one which tends to be most simple
-				and handles the constraints well. <br><br>
-				References- <a href="https://nlp.stanford.edu/IR-book/html/htmledition/an-example-information-retrieval-problem-1.html">
-				Manning, Raghavan, Schultze</a>  <br>
-				Image Credits- <a href="https://www.shakespeare.org.uk/visit/shakespeares-birthplace/">shakespeare birthplace trust</a>
+				<img src="/blog_images/vector_space.png" alt="inverted_index" style="width: 100%" >
+				<tt>Fig1. Vector space where terms are axes, while query and documents are vectors</tt><br><br>
+				
+				For example, in the figure 1, we can suppose the terms Weak and Strong to be the two axes- x and y respectively.
+				Since the document \(d_1\) is semantically related to Strong, vector of  \(d_1\) will be closer to y axis, while
+				the document \(d_3\) is semantically related to Weak, vector of  \(d_3\) will be closer to x-axis. <br><br>
+				On the other hand, \(d_2\) contains references to both Weak and Strong and thus it's vector will be in the middle.
+				For the query: <i>weak strong</i>, which could be also be represented as vector (consider it as short document),
+				we find that its vector is near the vector of \(d_2\) as it contains references to both Weak and Strong. <br><br>
+				
+				Now, we can rank the documents based on the similarity or proximity of the query vector with the vector
+				of the documents. <i>The question is how do we find the similarity of two vectors?</i> <br><br>
+				
+				Euclidean distance is not a good option since we can see in the figure itself that distance between q and \(d_2\)
+				is larger compared to distance between q and \(d_1\), although q is semantically closer to \(d_2\).
+				Angle betweent the vectors will be a good idea. The smaller the angle the better the similarity. In fact, we
+				can use the cosine of the angles since cosine of two vectors is their dot product if they are 
+				length normalized. We need length normalization to account for documents that are similar but have
+				different lengths. <br>
+				
+				$$ cos(q,d)= \frac{\Sigma_{i=1}^{|V|} q_i d_i}{\sqrt{\Sigma_{i=1}^{|V|} q_{i}^{2}} \sqrt{\Sigma_{i=1}^{|V|} d_{i}^{2}}}$$
+				where \(q_i\) is tf-idf weight of term i in the query and \(d_i\) is tf-idf weight of term i in the document. 
+				The denominator represents that query and documents are normalized. <br><br>
+				
+				Let's take an example to understand how cosine is calculated. Assume that we have three novels-
+				Austen's <i>Sense and Sensibility</i> , <i>Pride and Prejudice</i> and Bronte's <i>Wuthering Heights</i>.
+				We take three terms with normalized log term frequency (we don't do idf-weighting to keep it simple) as shown
+				in the figure 2.
+				
+				<img src="/blog_images/tf_vs.png" alt="inverted_index" style="width: 100%" >
+				<tt>Fig2. Normalized log term-frequency weights of SaS,PaP,and WH</tt><br><br>
+				
+				Then, $$cos(SaS, Pap) = 0.996 * 0.993 + 0.087 * 0.120 + 0 = 0.999$$
+				$$cos(SaS, WH) = 0.996 * 0.847 + 0.087 * 0.466 + 0.017 *0.254 = 0.888$$
+				$$cos(PaP, WH) = 0.993 * 0.847 + 0.120 * 0.466  +  0 = 0.896$$
+				
+				It can be seen that cos(SaS, PaP) is greater than other two which is obvious
+				since SaS and PaP are both written by Austen. 
+				
+			
+					
 				</span>
       </p>
       <div class="w3-row">
         <div class="w3-col m8 s12">
-          <p><button class="w3-button w3-padding-large w3-white w3-border" onclick="expandRead(this)" id="1"><b>READ MORE »</b></button></p>
+          <p><button class="w3-button w3-padding-large w3-white w3-border" onclick="expandRead(this)" id="3"><b>READ MORE »</b></button></p>
         </div>
         <div class="w3-col m4 w3-hide-small">
-          <p><span class="w3-padding-large w3-right"><b>Comments  </b> <span class="w3-badge">2</span></span></p>
+          <p><button class="w3-button w3-padding-large w3-border w3-right" onclick="expandComments(this)" id="3"><b>Comments  </b></button></p>
         </div>
+      </div>
+			<div class="w3-container utterances"  id="comments_3" style="display:none;">
+					<script src="https://utteranc.es/client.js"
+        	repo="manishpatel005/manishpatel005.github.io"
+        	issue-term="pathname"
+        	theme="github-light"
+        	crossorigin="anonymous"
+        	async>
+					</script>
       </div>
     </div>
   </div>
@@ -362,7 +375,7 @@ and is wrapped around the whole page content, except for the footer in this exam
     <div class="w3-container w3-white">
       <h4><b>Manish Patel</b></h4>
       <p>Howdy!<br>
-       I am a recent grad from Texas A&M University where I worked in Information
+       I am a recent grad from Texas A&amp;M University where I worked in Information
 				Storage and Retrieval, NLU, and Image Segmentation.   
        I have interned in Google Search team (Mountain View, US) and worked in C-DOT (New Delhi, India) as Research Engineer. 
        I love solving challenging problems in the field of algorithm design and have 5+ years of experience in algorithm design and coding. 
@@ -377,8 +390,9 @@ and is wrapped around the whole page content, except for the footer in this exam
 				PV Sindu and Victor Axelson.  
       </p>
       <p>
-      The name of this blog --The Anvikshik-- comes from a Sanskrit word Anviskhiki which roughly means the science of searching whether
-			inwards(spiritual) or outwards(reasoning/logic). Since my interests lie in the 
+      The name of this blog --The Anvikshik-- comes from a Sanskrit word Anviskhiki which roughly means the science of searching.
+			<!--whether
+			inwards(spiritual) or outwards(reasoning/logic). -->Since my interests lie in the 
 			field of information retrieval, I couldn't find a better word than this to describe the blog.
 			My intention of creating this blog is to share my enthusiasm of this niche domain and encourage people to generate
       new ideas to solve the challenging problems of today.
@@ -388,8 +402,10 @@ and is wrapped around the whole page content, except for the footer in this exam
       </p>
     </div>
   </div><hr>
+	
   
   <!-- Posts -->
+	<!-- 
   <div class="w3-card w3-margin">
     <div class="w3-container w3-padding">
       <h4>Popular Posts</h4>
@@ -418,18 +434,19 @@ and is wrapped around the whole page content, except for the footer in this exam
     </ul>
   </div>
   <hr> 
- 
+  -->
   <!-- Labels / tags -->
   <div class="w3-card w3-margin">
     <div class="w3-container w3-padding">
       <h4>Tags</h4>
     </div>
     <div class="w3-container w3-white">
-    <p><span class="w3-tag w3-black w3-margin-bottom">Travel</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">New York</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">London</span>
-      <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">IKEA</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">NORWAY</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">DIY</span>
-      <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Ideas</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Baby</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Family</span>
-      <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">News</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Clothing</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Shopping</span>
-      <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Sports</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Games</span>
+    <p><span class="w3-tag w3-light-grey w3-margin-bottom">Information Retrieval</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">SEO</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">TF-IDF</span>
+      <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Vector Space</span> 
+			<span class="w3-tag w3-light-grey w3-small w3-margin-bottom">BM25</span> 
+			<span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Recommder Systems</span>
+			<span class="w3-tag w3-light-grey w3-small w3-margin-bottom"><img src="https://hitcounter.pythonanywhere.com/count/tag.svg" alt="Hits"></span>
+			
     </p>
     </div>
   </div>
@@ -446,7 +463,7 @@ and is wrapped around the whole page content, except for the footer in this exam
 <!-- Footer -->
 <footer class="w3-container w3-dark-grey w3-padding-32 w3-margin-top">
   <button class="w3-button w3-black w3-disabled w3-padding-large w3-margin-bottom">Previous</button>
-  <button class="w3-button w3-black w3-padding-large w3-margin-bottom">Next »</button>
+  <button class="w3-button w3-black w3-disabled w3-padding-large w3-margin-bottom">Next »</button>
   <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
 </footer>
 
