@@ -10,9 +10,7 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 span[id^="more"] {display: none;}
 </style>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async
-        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <meta name="google-site-verification" content="bvg4InVMcXnOLQELzO9Mb08WHTUcPh2SN9Ftq1-D7Hc" />
 <body class="w3-light-grey">
 
@@ -333,9 +331,11 @@ and is wrapped around the whole page content, except for the footer in this exam
 				<img src="/blog_images/tf_vs.png" alt="inverted_index" style="width: 100%" >
 				<tt>Fig2. Normalized log term-frequency weights of SaS,PaP,and WH</tt><br><br>
 				
-				Then, $$cos(SaS, Pap) = 0.996 * 0.993 + 0.087 * 0.120 + 0 = 0.999$$
-				$$cos(SaS, WH) = 0.996 * 0.847 + 0.087 * 0.466 + 0.017 *0.254 = 0.888$$
-				$$cos(PaP, WH) = 0.993 * 0.847 + 0.120 * 0.466  +  0 = 0.896$$
+				
+				Then, <br>
+				\(cos(SaS, Pap) = 0.996 * 0.993 + \) \(0.087 * 0.120 + 0 = 0.999 \) <br>
+				\(cos(SaS, WH) = 0.996 * 0.847 + \) \(0.087 * 0.466 + 0.017 *0.254 = 0.888\)<br>
+				\(cos(PaP, WH) = 0.993 * 0.847 + \) \(0.120 * 0.466  + 0 = 0.896\)<br><br>
 				
 				It can be seen that cos(SaS, PaP) is greater than other two which is obvious
 				since SaS and PaP are both written by Austen. <br><br>
