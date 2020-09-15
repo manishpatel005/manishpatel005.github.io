@@ -43,8 +43,8 @@ and is wrapped around the whole page content, except for the footer in this exam
             Course called Information Retrieval. I thought to myself-let's give
             it a try and see what is this heck all about and if I don't like
             it, I can switch in a week. The professor of this course was 
-            Dr. Caverlee.
-            <span id="dots_0">...</span><span id="more_0"><br><br> 
+            Dr. Caverlee. <br><br>
+            
             One week into this course, and I fell in love with it! I remember 
             our first assignment-SEO Optimization. We were given a random 
             term-sajfd hfafbjhd-that was not present on any 
@@ -56,11 +56,11 @@ and is wrapped around the whole page content, except for the footer in this exam
             One person made a Linked profile of person named sajfd hfafbjhd. 
             Another claimed to be scientist and wrote a research of this phenomenon
             called sajfd hfafbjhd. I made webpages, added references to this term
-            in all social media pages. I also remember I made a business page for a mall
-            with this term and asked my friends to like it. <br><br>
-           
-            Believe it or not, it started showing up on top of the results. I 
-            need to give credits to my roommate Nikhil who made a school with 
+            in all social media pages. I also remember 
+						<span id="dots_0">...</span><span id="more_0">
+						I made a business page for a mall with this term and asked my 
+						friends to like it. Believe it or not, it started showing up on top 
+						of the results. I need to give credits to my roommate Nikhil who made a school with 
             this name in the middle of a lake. The fun part is when one day my 
             friend Das was booking an Uber he found that this mall was being 
             shown as one of the pickup points. Another fun thing happend was 
@@ -117,8 +117,6 @@ and is wrapped around the whole page content, except for the footer in this exam
 					AND NOT Calpurnia. There are multiple ways to do it.
 					One way is to search every document(using computers) and note down which documents
 					contains Brutus and Caesar but not Calpurnia. 
-					<span id="dots_1">...</span><span id="more_1">
-					<br><br> 
 					
 					<img src="/blog_images/term_incidence.png" alt="term_incidence" style="width: 100%">		
 					<tt>Fig1. A term-document incidence matrix</tt><br><br>
@@ -135,7 +133,8 @@ and is wrapped around the whole page content, except for the footer in this exam
 					problem with the above solution is that the matrix becomes too big for
 					computer's memory for large corpus of documents containing distinct
 					terms. <br><br>
-				If we look closely we find that the matrix is sparse i.e only a small 
+					If we look closely <span id="dots_1">...</span><span id="more_1">
+					we find that the matrix is sparse i.e only a small 
 				subset of words are present in a document. Thus an effective way to
 				store the presence of words in documents is to record only 1s and create
 				an inverted index.
@@ -204,7 +203,6 @@ and is wrapped around the whole page content, except for the footer in this exam
 				In the previous post, we saw that intersection of postings resulted in
 				list of common postings for the query. <i>Does it matter in which order
 				should we show the result to the user?</i> It turns out that it does matter.
-				<span id="dots_2">...</span><span id="more_2">
 				<br><br>
 				<img src="/blog_images/google_ctr.png" alt="term_incidence" style="width: 100%">
 				<tt>Fig1. Ranking of webpages vs CTR</tt>
@@ -219,6 +217,7 @@ and is wrapped around the whole page content, except for the footer in this exam
 				The next logical step to rank two or more documents for a free-form query such as we type
 				in search engines (as opposed to the boolean query of last post) is to find the number
 				of occurences of the query term <i>t</i> in the document <i>d</i>. To calculate the score/rank
+				<span id="dots_2">...</span><span id="more_2">
 				we find the frequency of all terms of query in the documents, sum them up
 				and rank them in decreasing order. This weighting is called <i>term frequency</i>.
 				<img src="/blog_images/shakespeare_count_terms.png" alt="inverted_index" style="width: 100%" >
@@ -238,10 +237,10 @@ and is wrapped around the whole page content, except for the footer in this exam
 				can be done by using <i>document frequency</i> which is defined as the number of documents
 				that contain the term <i>t</i>. To weight <i>tf</i> we will use <i>inverse document frequency</i>
 				which is defined as:
-				$$ idf_t= \log \frac{N}{df_t} $$
+				$$ idf_t= \log_{10} \frac{N}{df_t} $$
 				where N is the number of documents in the collection. This brings us an important milestone in IR
 				which is tf-idf weighting and defined as:
-				$$ w_{t,d}= (1+log_{10}tf) * \log \frac{N}{df_t} $$
+				$$ w_{t,d}= (1+log_{10}tf) * \log_{10} \frac{N}{df_t} $$
 				tf-idf weight increses with the number of occurences within a document(term-frequency) and 
 				increases with the rarity of the term in the collection (inverse document frequency).
 				
@@ -297,7 +296,7 @@ and is wrapped around the whole page content, except for the footer in this exam
 				of vector space where each document can be treated as a vector of 
 				tf-idf weights \( \in R^{|V|} \) thus leading to a |V| dimensional real-valued
 				vector space. Then terms can be treated as axes and documents as vector in this 
-				vector space. <span id="dots_3">...</span><span id="more_3">
+				vector space. 
 				
 				<img src="/blog_images/vector_space.png" alt="inverted_index" style="width: 100%" >
 				<tt>Fig1. Vector space where terms are axes, while query and documents are vectors</tt><br><br>
@@ -312,7 +311,8 @@ and is wrapped around the whole page content, except for the footer in this exam
 				Now, we can rank the documents based on the similarity or proximity of the query vector with the vector
 				of the documents. <i>The question is how do we find the similarity of two vectors?</i> <br><br>
 				
-				Euclidean distance is not a good option since we can see in the figure itself that distance between q and \(d_2\)
+				Euclidean distance is not a good option since <span id="dots_3">...</span><span id="more_3">
+				we can see in the figure itself that distance between q and \(d_2\)
 				is larger compared to distance between q and \(d_1\), although q is semantically closer to \(d_2\).
 				Angle betweent the vectors will be a good idea. The smaller the angle the better the similarity. In fact, we
 				can use the cosine of the angles since cosine of two vectors is their dot product if they are 
@@ -356,6 +356,77 @@ and is wrapped around the whole page content, except for the footer in this exam
         </div>
       </div>
 			<div class="w3-container utterances"  id="comments_3" style="display:none;">
+					<script src="https://utteranc.es/client.js"
+        	repo="manishpatel005/manishpatel005.github.io"
+        	issue-term="pathname"
+        	theme="github-light"
+        	crossorigin="anonymous"
+        	async>
+					</script>
+      </div>
+    </div>
+  </div>
+
+	
+	 <!-- Blog entry -->
+  <div class="w3-card-4 w3-margin w3-white">
+    <div class="w3-container">
+      <h3><b>Information Storage and Retrieval-4</b></h3>
+      <h5>Tutorial on TF-IDF <span class="w3-opacity">September 15, 2020</span></h5>
+    </div>
+
+    <div class="w3-container">
+    	<p>
+				
+      	Today I am going to clarify the concept of tf-idf using a small example.
+				Suppose that we have two documents:
+				<blockquote>
+    				<p>Doc1: &quot;one small step for man one giant leap for mankind &quot;</p>
+				</blockquote>
+				<blockquote>
+					<p>Doc2: &quot;one has to take small steps to reach big goals&quot;</p>
+				</blockquote>
+				If we calculate the frequency of each word then it would be look something like this:
+				<img src="/blog_images/tfidf_tut.png" alt="example-tfidf" style="width: 90%" > <br>
+				To calculate the tf-idf of "one", we first calculate its tf which is the raw-frequency. 
+				thus tf of "one" is: <br>
+				$$ tf("one", Doc1) = \frac{2}{10} = \frac{1}{5} = 0.2$$
+				$$ tf("one", Doc2) = \frac{1}{10} = 0.1$$
+				The idf of a term is constant for the entire corpus and is calculated as the logarithm of total
+				number of documents in corpus divided by the number of documents that contains the term. 
+				Thus, the idf for term "one" is: 
+				$$ idf("one", {Doc1,Doc2}) = log(\frac{2}{2}) = 0$$
+				Since tf-idf is defined as: 
+				$$ tf-idf_{(t,d)}= (1+log_{10}tf) * \log_{10} \frac{N}{df_t} $$
+				we get
+				$$ tf-idf_{("one",Doc1)}= (1+log_{10}0.2) * 0 = 0 $$
+				$$ tf-idf_{("one",Doc2)}= (1+log_{10}0.1) * 0 = 0 $$
+				Since the t-idf is zero for the word "one", 
+					<span id="dots_4">...</span><span id="more_4">
+				it means that this word is not very informative and
+				appears in all the documents. <br>
+				Let's calculate the tf-idf for another word "to". The tf of "to" is:
+				$$ tf("to", Doc1) = \frac{0}{10} = 0 $$
+				$$ tf("to", Doc2) = \frac{2}{10} = 0.2 $$
+				The idf for term "to" is: 
+				$$ idf("to", {Doc1,Doc2}) = log(\frac{2}{1}) = 0.301$$
+				The tf-idf for "to" is: 
+				$$ tf-idf_{("to",Doc1)}= (1+log_{10}0) * 0.301 = 0 $$
+				$$ tf-idf_{("to",Doc2)}= (1+log_{10}0.2) * 0.301 = 0.30 * .30 = 0.09 $$ 
+				The word "to" is more interesting as it occurs twice in the second document. <br>
+				Here we have taken (1+log 0) to be 0 since log 0 is undefined and we want to have weight as 0 when the term is not present.
+			</span>	
+			</p>
+			
+      <div class="w3-row">
+        <div class="w3-col m8 s12">
+          <p><button class="w3-button w3-padding-large w3-white w3-border" onclick="expandRead(this)" id="4"><b>READ MORE »</b></button></p>
+        </div>
+        <div class="w3-col m4 w3-hide-small">
+          <p><button class="w3-button w3-padding-large w3-border w3-right" onclick="expandComments(this)" id="4"><b>Comments  </b></button></p>
+        </div>
+      </div>
+			<div class="w3-container utterances"  id="comments_4" style="display:none;">
 					<script src="https://utteranc.es/client.js"
         	repo="manishpatel005/manishpatel005.github.io"
         	issue-term="pathname"
@@ -448,8 +519,8 @@ and is wrapped around the whole page content, except for the footer in this exam
       <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Vector Space</span> 
 			<span class="w3-tag w3-light-grey w3-small w3-margin-bottom">BM25</span> 
 			<span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Recommder Systems</span>
-			<span class="w3-tag w3-light-grey w3-small w3-margin-bottom"><img src="https://hitcounter.pythonanywhere.com/count/tag.svg" alt="Hits"></span>
-			
+			<!--<span class="w3-tag w3-light-grey w3-small w3-margin-bottom"><img src="https://hitcounter.pythonanywhere.com/count/tag.svg" alt="Hits"></span>
+			-->
     </p>
     </div>
   </div>
@@ -467,7 +538,7 @@ and is wrapped around the whole page content, except for the footer in this exam
 <footer class="w3-container w3-dark-grey w3-padding-32 w3-margin-top">
   <button class="w3-button w3-black w3-disabled w3-padding-large w3-margin-bottom">Previous</button>
   <button class="w3-button w3-black w3-disabled w3-padding-large w3-margin-bottom">Next »</button>
-  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+  <!--<p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p> -->
 </footer>
 
 <script>
