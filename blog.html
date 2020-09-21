@@ -25,9 +25,9 @@
 	<meta name="google-site-verification" content="bvg4InVMcXnOLQELzO9Mb08WHTUcPh2SN9Ftq1-D7Hc" />
 	<!-- Following three are for collapsible read more button starting  from id 5-->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
 	<body class="w3-light-grey">
 
 		<!-- w3-content defines a container for fixed size centered content, 
@@ -383,396 +383,396 @@ and is wrapped around the whole page content, except for the footer in this exam
 								<p>Doc2: &quot;one has to take small steps to reach big goals&quot;</p>
 							</blockquote>
 							<p>
-							If we calculate the frequency of each word then it would be look something like this:
-							<img src="/blog_images/tfidf_tut.png" alt="example-tfidf" style="width: 90%"> <br>
-							To calculate the tf-idf of "one", we first calculate its tf which is the raw-frequency.
-							thus tf of "one" is: <br>
-							$$ tf("one", Doc1) = \frac{2}{10} = \frac{1}{5} = 0.2$$
-							$$ tf("one", Doc2) = \frac{1}{10} = 0.1$$
-							The idf of a term is constant for the entire corpus and is calculated as the logarithm of total
-							number of documents in corpus divided by the number of documents that contains the term.
-							Thus, the idf for term "one" is:
-							$$ idf("one", {Doc1,Doc2}) = log(\frac{2}{2}) = 0$$
-							Since tf-idf is defined as:
-							$$ tf-idf_{(t,d)}= (1+log_{10}tf) * \log_{10} \frac{N}{df_t} $$
-							we get
-							$$ tf-idf_{("one",Doc1)}= (1+log_{10}0.2) * 0 = 0 $$
-							$$ tf-idf_{("one",Doc2)}= (1+log_{10}0.1) * 0 = 0 $$
-							Since the t-idf is zero for the word "one",
-							<span id="dots_4">...</span><span id="more_4">
-							it means that this word is not very informative and
-							appears in all the documents. <br>
-							Let's calculate the tf-idf for another word "to". The tf of "to" is:
-							$$ tf("to", Doc1) = \frac{0}{10} = 0 $$
-							$$ tf("to", Doc2) = \frac{2}{10} = 0.2 $$
-							The idf for term "to" is:
-							$$ idf("to", {Doc1,Doc2}) = log(\frac{2}{1}) = 0.301$$
-							The tf-idf for "to" is:
-							$$ tf-idf_{("to",Doc1)}= (1+log_{10}0) * 0.301 = 0 $$
-							$$ tf-idf_{("to",Doc2)}= (1+log_{10}0.2) * 0.301 = 0.30 * .30 = 0.09 $$
-							The word "to" is more interesting as it occurs twice in the second document. <br>
-							Here we have taken (1+log 0) to be 0, since log 0 is undefined and we want to have weight as 0 when the term is not present. <br>
-							To calculate the tf-idf score for the entire document, one can just sum up the tf-idf scores for all the individual terms.
-							</span>
+								If we calculate the frequency of each word then it would be look something like this:
+								<img src="/blog_images/tfidf_tut.png" alt="example-tfidf" style="width: 90%"> <br>
+								To calculate the tf-idf of "one", we first calculate its tf which is the raw-frequency.
+								thus tf of "one" is: <br>
+								$$ tf("one", Doc1) = \frac{2}{10} = \frac{1}{5} = 0.2$$
+								$$ tf("one", Doc2) = \frac{1}{10} = 0.1$$
+								The idf of a term is constant for the entire corpus and is calculated as the logarithm of total
+								number of documents in corpus divided by the number of documents that contains the term.
+								Thus, the idf for term "one" is:
+								$$ idf("one", {Doc1,Doc2}) = log(\frac{2}{2}) = 0$$
+								Since tf-idf is defined as:
+								$$ tf-idf_{(t,d)}= (1+log_{10}tf) * \log_{10} \frac{N}{df_t} $$
+								we get
+								$$ tf-idf_{("one",Doc1)}= (1+log_{10}0.2) * 0 = 0 $$
+								$$ tf-idf_{("one",Doc2)}= (1+log_{10}0.1) * 0 = 0 $$
+								Since the t-idf is zero for the word "one",
+								<span id="dots_4">...</span><span id="more_4">
+								it means that this word is not very informative and
+								appears in all the documents. <br>
+								Let's calculate the tf-idf for another word "to". The tf of "to" is:
+								$$ tf("to", Doc1) = \frac{0}{10} = 0 $$
+								$$ tf("to", Doc2) = \frac{2}{10} = 0.2 $$
+								The idf for term "to" is:
+								$$ idf("to", {Doc1,Doc2}) = log(\frac{2}{1}) = 0.301$$
+								The tf-idf for "to" is:
+								$$ tf-idf_{("to",Doc1)}= (1+log_{10}0) * 0.301 = 0 $$
+								$$ tf-idf_{("to",Doc2)}= (1+log_{10}0.2) * 0.301 = 0.30 * .30 = 0.09 $$
+								The word "to" is more interesting as it occurs twice in the second document. <br>
+								Here we have taken (1+log 0) to be 0, since log 0 is undefined and we want to have weight as 0 when the term is not present. <br>
+								To calculate the tf-idf score for the entire document, one can just sum up the tf-idf scores for all the individual terms.
+								</span>
 							</p>
 
-						<div class="w3-row">
-							<div class="w3-col m8 s12">
-								<p><button class="w3-button w3-padding-large w3-white w3-border" onclick="expandRead(this)" id="4"><b>READ MORE »</b></button></p>
+							<div class="w3-row">
+								<div class="w3-col m8 s12">
+									<p><button class="w3-button w3-padding-large w3-white w3-border" onclick="expandRead(this)" id="4"><b>READ MORE »</b></button></p>
+								</div>
+								<div class="w3-col m4 w3-hide-small">
+									<p><button class="w3-button w3-padding-large w3-border w3-right" onclick="expandComments(this)" id="4"><b>Comments  </b></button></p>
+								</div>
 							</div>
-							<div class="w3-col m4 w3-hide-small">
-								<p><button class="w3-button w3-padding-large w3-border w3-right" onclick="expandComments(this)" id="4"><b>Comments  </b></button></p>
+							<div class="w3-container utterances" id="comments_4" style="display:none;">
+								<script src="https://utteranc.es/client.js" repo="manishpatel005/manishpatel005.github.io" issue-term="pathname" theme="github-light" crossorigin="anonymous" async>
+								</script>
 							</div>
-						</div>
-						<div class="w3-container utterances" id="comments_4" style="display:none;">
-							<script src="https://utteranc.es/client.js" repo="manishpatel005/manishpatel005.github.io" issue-term="pathname" theme="github-light" crossorigin="anonymous" async>
-							</script>
 						</div>
 					</div>
+
+
+					<!-- Blog entry -->
+					<div class="w3-card-4 w3-margin w3-white">
+						<img src="/blog_images/hubs_cover.png" alt="Hubs and Auth cover" style="width:100%">
+						<div class="w3-container">
+							<h3><b>Information Storage and Retrieval-5</b></h3>
+							<h5>Hubs and Authorities- HITS Algorithm <span class="w3-opacity">September 20, 2020</span></h5>
+						</div>
+
+						<div class="w3-container">
+
+							<p>Imagine you are developing a search engine for a digital library such as IEEE Explore or arxiv and a user submits a query&nbsp;- <span style="color: #ff0000;">What is attention</span> ? </p>
+							<p>If you have worked in NLP or machine learning you might have heard of this mechanism called <strong>Attention</strong> introduced by <a href="https://arxiv.org/abs/1706.03762">Vaswani et al</a>, in his ground-breaking research paper-&nbsp;<strong>Attention is all you need-&nbsp;</strong>NeurIPS 2017. It was such an important concept that it changed the course of Neural Machine Translation (and of NLP ) and led to neural architecture such as Transformers, and Bidirectional Transformers(BERT) etc. See this blog post by <a href="https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/">Jay Alammar</a> for an amazing explaination on how attention works. </p>
+							<p>Now if you make a simple text based search on all the papers in the library, you will get like million documents containing the term "attention" as it's such a common word. If you make a tf-idf based search then the original paper by Vaswani will get even lower score than the review paper by&nbsp; <a href="https://arxiv.org/pdf/1902.02181.pdf">Galassi</a> as the former have used the term attention only 97 times as opposed to the latter who have used it more than 400 times.&nbsp;</p>
+							<p>So the question i<em>s: how to figure out who is the authentic source of this mechanism called Attention?&nbsp;</em>It turns out that in this network structure of linked environment i.e. if paper A cites paper B then it can be deemed as a link from paper A to paper B, one can use PageRank or HITS algorithm. HITS algorithm was developed by Prof. Jon Kleinberg at Cornell University at the same time when PageRank was developed by Larry and Sergey at Stanford. Let's see how how HITS works.</p>
+							<p><strong>Hyperlink-induced Topic Search</strong> (HITS) is an approach to discover the authoritative sources in context of World Wide Web (www) where the number of pages is enormous and is linked to each other by hyperlinks (incoming and outgoing). But this approach could also be used for the linked structure discussed above.&nbsp;</p>
+							<p><strong>Authorative sources</strong> mean the sources which provide valuable information on the subject and has been considered as the "authority" by others due to its virtue of originality or popularity. For example, for a query on "<em>Texas A&amp;M University"</em>, the homepage of Texas A&amp;M can be considered as the authority.&nbsp; Pages of goverment websites might also be considered as the authorities for the query. These are the pages truly relevant to the given query and are expected by the users from the search engine.</p>
+							<p>However, there is another category of the pages called <strong>hubs</strong>, whose role is to advertise the authoritative pages i.e. they contain links to "authority" pages and help the search engine move in the right direction. For example, "usnews.com" and "timeshighereducation.com" - the sites that ranks the schools can be considered as hubs.&nbsp; </p>
+
+							<p>Thus,</p>
+							<ul>
+								<li>A good hub page for a topic points to many authorative pages on that topic.</li>
+								<li>A good authority page for a topic is pointed to by many good hubs for that topic.</li>
+							</ul>
+							<p>For the query- "what is attention", we would have a network graph like this:</p>
+
+							<img src="/blog_images/hubs_and_auth.png" alt="hubs_and_authority_example" style="width: 60%"> <br>
+							<p>The idea behind HITS algorithm is to find out the good hubs and authorities for a topic by assigning two numbers to a page: hub score and authority score. To start with something, we first do a regular keyword search for the topic and call the search result as&nbsp;<strong>root set.</strong>&nbsp;Typically, it consists of 200 to 1000 nodes.&nbsp; </p>
+							<img src="/blog_images/root_base_set.png" alt="root_and_base_set" style="width: 60%"> <br>
+							<tt>Fig1. Root set consists of examples from original query while base set consists of root set + incoming and outgoing links</tt><br><br>
+							<p>Then we find all the nodes that are either pointed by the root set or points to the root set. This we call as <strong>base set</strong>( it includes the root set). Typically, it consists of around 5000 nodes.&nbsp;</p>
+							<p>Next we do the following:</p>
+							<ol>
+								<li>For each page x in the base set:</li>
+								<li>Initiliaze x: hub(x) := 1 and auth(x) := 1</li>
+								<li>Repeat the following update until convergence:
+									<ul>
+										<li style="text-align: left;">hub(x) := &sum; auth(x')&nbsp; (where x' is pointed by x)</li>
+										<li style="text-align: left;">auth(x) = &sum; hub(x')&nbsp;&nbsp; (where x' points to x)</li>
+										<li style="text-align: left;">Scale down or normalize the hub(x) and auth(x) by l2 norm (square root of sum of squares)</li>
+									</ul>
+									<img src="/blog_images/combine_hub_auth.png" alt="combine_hubs_and_authority_example" style="width: 80%"> <br>
+								</li>
+								<li>After convergence, the pages with highest hub scores will be the top hubs while the page with highest auth scores will be the top authorities.</li>
+							</ol>
+
+							<p style="text-align: left;">Let us take a small example to understand how it works:</p>
+
+							<div id="more_5" class="collapse">
+
+								<img src="/blog_images/hits_example.png" alt="hits_example" style="width: 100%"> <br>
+								<tt>Fig2. Linked structure graph. We assign A to represent attention, B to represent BERT and N to represent NMT in the following example. </tt><br><br>
+								<p style="text-align: left;"><strong>Round 0</strong>: Initialize</p>
+								<table style="border-collapse: collapse; width: 46.8666%;" height="98" border="1">
+									<tbody>
+										<tr>
+											<td style="width: 43.0337%; text-align: center;"><strong>Hubs score</strong></td>
+											<td style="width: 47.1973%; text-align: center;"><strong>Auth score</strong></td>
+										</tr>
+										<tr>
+											<td style="width: 43.0337%;">hub (A) = 1</td>
+											<td style="width: 47.1973%;">auth (A) = 1</td>
+										</tr>
+										<tr>
+											<td style="width: 43.0337%;">hub (B) = 1</td>
+											<td style="width: 47.1973%;">auth (B) = 1</td>
+										</tr>
+										<tr>
+											<td style="width: 43.0337%;">hub (N) = 1</td>
+											<td style="width: 47.1973%;">auth (N) = 1</td>
+										</tr>
+									</tbody>
+								</table>
+
+								<p><strong>Round 1</strong>:</p>
+								<p>First let's calculate the hubs score.</p>
+								<p>Since A points to A itself and N, we add the authority score of A and N from previous round to get the new_hub score for A which is = 1 + 1 = 2.</p>
+								<p>Since B points to A, B and N, we add the authority score of A, B, and N from previous round to get the new_hub score for B which is = 1 + 1 + 1 = 3.</p>
+								<p>Since N does not point anywhere,&nbsp; we have the new_hub score for N which is = 0.</p>
+								<p>The l2 norm for new_hub will be =&nbsp;&radic;(2^2 + 3^2 + 0^ 2) = 3.60</p>
+								<p>Dividing each element of new_hub score, we have new hubs score as follows:</p>
+								<table style="border-collapse: collapse; width: 22.4014%;" height="77" border="1">
+									<tbody>
+										<tr>
+											<td style="width: 100%; text-align: center;">Hubs Score</td>
+										</tr>
+										<tr>
+											<td style="width: 100%;">hub (A) = 0.55</td>
+										</tr>
+										<tr>
+											<td style="width: 100%;">hub (B) = 0.83</td>
+										</tr>
+										<tr>
+											<td style="width: 100%;">hub (N) = 0.0</td>
+										</tr>
+									</tbody>
+								</table>
+								<p>Let's us now calculate the authority score.</p>
+								<p>Since A is pointed to by A and B, we add the hubs score of A and B from previous round to get the new_auth score for A which is = 2</p>
+								<p>Since B is pointed to by B, we add the hubs score of B from previous round to get the new_auth score for B which is = 1</p>
+								<p>&nbsp;As N is pointed to by A and B both, we add the hubs score of A and B from previous round to get the new_auth score for N which is = 2</p>
+								<p>The l2 norm for new_auth will be = &radic;(2^2 + 1^2 + 2^ 2) = 3</p>
+								<p>Dividing each element of new_hub score, we have new auths score as follows:</p>
+								<table style="border-collapse: collapse; width: 22.4014%; height: 72px;" height="77" border="1">
+									<tbody>
+										<tr style="height: 18px;">
+											<td style="width: 100%; text-align: center; height: 18px;">Auth Score</td>
+										</tr>
+										<tr style="height: 18px;">
+											<td style="width: 100%; height: 18px;">auth (A) = 0.67</td>
+										</tr>
+										<tr style="height: 18px;">
+											<td style="width: 100%; height: 18px;">auth (B) = 0.33</td>
+										</tr>
+										<tr style="height: 18px;">
+											<td style="width: 100%; height: 18px;">auth (N) = 0.67</td>
+										</tr>
+									</tbody>
+								</table>
+								<p>Thus round 1 end can be summarized as follows:</p>
+								<table style="border-collapse: collapse; width: 46.8666%;" height="98" border="1">
+									<tbody>
+										<tr>
+											<td style="width: 43.0337%; text-align: center;"><strong>Hubs score</strong></td>
+											<td style="width: 47.1973%; text-align: center;"><strong>Auth score</strong></td>
+										</tr>
+										<tr>
+											<td style="width: 43.0337%;">hub (A) = 0.55</td>
+											<td style="width: 47.1973%;">auth (A) = 0.67</td>
+										</tr>
+										<tr>
+											<td style="width: 43.0337%;">hub (B) = 0.83</td>
+											<td style="width: 47.1973%;">auth (B) = 0.33</td>
+										</tr>
+										<tr>
+											<td style="width: 43.0337%;">hub (N) = 0.0</td>
+											<td style="width: 47.1973%;">auth (N) = 0.67</td>
+										</tr>
+									</tbody>
+								</table>
+								<p><strong>Round 2:&nbsp;</strong></p>
+								<p>Similar to the previous round, we will calculate first the hubs score and then authority score. </p>
+								<p>Since A points to A and N, we add the authority score of A and N from previous round to get the new _hub score for A which is = 0.67 + 0.67 = 1.34</p>
+								<p>Since B points to A,B and N, the new_hub score for B&nbsp; = 0.67 + 0.33 + 0.67 = 1.67</p>
+								<p>As N does not point to anything, the new_hub score for N = 0</p>
+								<p>The l2 norm for new_hub is: &radic;(1.34^2 +1.67^2 + 0) = 2.14</p>
+								<p>Dividing each element of new_hub score, we have new hub score as follows:</p>
+								<table style="border-collapse: collapse; width: 22.4014%; height: 72px;" height="77" border="1">
+									<tbody>
+										<tr style="height: 18px;">
+											<td style="width: 100%; text-align: center; height: 18px;">Hub Score</td>
+										</tr>
+										<tr style="height: 18px;">
+											<td style="width: 100%; height: 18px;">hub (A) = 0.63</td>
+										</tr>
+										<tr style="height: 18px;">
+											<td style="width: 100%; height: 18px;">hub (B) = 0.78</td>
+										</tr>
+										<tr style="height: 18px;">
+											<td style="width: 100%; height: 18px;">hub (N) = 0.0</td>
+										</tr>
+									</tbody>
+								</table>
+								<p>Since A is pointed to by A and B, we add the hubs score of A and B from previous round to get the new_auth score for A which is = 0.55 + 0.83 = 1.38</p>
+								<p>Since B is pointed to by B , the new_auth score for B&nbsp; = 0.83 </p>
+								<p>As N is pointed to by A and B, the new_auth score for N = 0.55 + 0.83 = 1.38</p>
+								<p>The l2 norm for new_auth is: &radic;(1.38^2 +0.83^2 + 1.38^2) = 2.12</p>
+								<p>Dividing each element of new_auth score, we have new auth score as follows:</p>
+								<table style="border-collapse: collapse; width: 22.4014%; height: 72px;" height="77" border="1">
+									<tbody>
+										<tr style="height: 18px;">
+											<td style="width: 100%; text-align: center; height: 18px;">Hub Score</td>
+										</tr>
+										<tr style="height: 18px;">
+											<td style="width: 100%; height: 18px;">auth (A) = 0.65</td>
+										</tr>
+										<tr style="height: 18px;">
+											<td style="width: 100%; height: 18px;">auth (B) = 0.39</td>
+										</tr>
+										<tr style="height: 18px;">
+											<td style="width: 100%; height: 18px;">auth (N) = 0.65</td>
+										</tr>
+									</tbody>
+								</table>
+								<p></p>
+								<p>Thus round 2 end can be summarized as follows:</p>
+								<table style="border-collapse: collapse; width: 46.8666%;" height="98" border="1">
+									<tbody>
+										<tr>
+											<td style="width: 43.0337%; text-align: center;"><strong>Hubs score</strong></td>
+											<td style="width: 47.1973%; text-align: center;"><strong>Auth score</strong></td>
+										</tr>
+										<tr>
+											<td style="width: 43.0337%;">hub (A) = 0.63</td>
+											<td style="width: 47.1973%;">auth (A) = 0.65</td>
+										</tr>
+										<tr>
+											<td style="width: 43.0337%;">hub (B) = 0.78</td>
+											<td style="width: 47.1973%;">auth (B) = 0.39</td>
+										</tr>
+										<tr>
+											<td style="width: 43.0337%;">hub (N) = 0.0</td>
+											<td style="width: 47.1973%;">auth (N) = 0.65</td>
+										</tr>
+									</tbody>
+								</table>
+
+								<p style="text-align: left;"><strong>Round 3</strong> Calculating in a similar manner we have,</p>
+								<table style="border-collapse: collapse; width: 46.8666%;" height="98" border="1">
+									<tbody>
+										<tr>
+											<td style="width: 43.0337%; text-align: center;"><strong>Hubs score</strong></td>
+											<td style="width: 47.1973%; text-align: center;"><strong>Auth score</strong></td>
+										</tr>
+										<tr>
+											<td style="width: 43.0337%;">hub (A) = 0.61</td>
+											<td style="width: 47.1973%;">auth (A) = 0.66</td>
+										</tr>
+										<tr>
+											<td style="width: 43.0337%;">hub (B) = 0.79</td>
+											<td style="width: 47.1973%;">auth (B) = 0.36</td>
+										</tr>
+										<tr>
+											<td style="width: 43.0337%;">hub (N) = 0.0</td>
+											<td style="width: 47.1973%;">auth (N) = 0.66</td>
+										</tr>
+									</tbody>
+								</table>
+
+								<p style="text-align: left;"><strong>Round 4</strong></p>
+								<table style="border-collapse: collapse; width: 46.8666%;" height="98" border="1">
+									<tbody>
+										<tr>
+											<td style="width: 43.0337%; text-align: center;"><strong>Hubs score</strong></td>
+											<td style="width: 47.1973%; text-align: center;"><strong>Auth score</strong></td>
+										</tr>
+										<tr>
+											<td style="width: 43.0337%;">hub (A) = 0.62</td>
+											<td style="width: 47.1973%;">auth (A) = 0.66</td>
+										</tr>
+										<tr>
+											<td style="width: 43.0337%;">hub (B) = 0.79</td>
+											<td style="width: 47.1973%;">auth (B) = 0.37</td>
+										</tr>
+										<tr>
+											<td style="width: 43.0337%;">hub (N) = 0.0</td>
+											<td style="width: 47.1973%;">auth (N) = 0.66</td>
+										</tr>
+									</tbody>
+								</table>
+
+								<p style="text-align: left;"><strong>Round 5</strong></p>
+								<table style="border-collapse: collapse; width: 46.8666%;" height="98" border="1">
+									<tbody>
+										<tr>
+											<td style="width: 43.0337%; text-align: center;"><strong>Hubs score</strong></td>
+											<td style="width: 47.1973%; text-align: center;"><strong>Auth score</strong></td>
+										</tr>
+										<tr>
+											<td style="width: 43.0337%;">hub (A) = 0.62</td>
+											<td style="width: 47.1973%;">auth (A) = 0.66</td>
+										</tr>
+										<tr>
+											<td style="width: 43.0337%;">hub (B) = 0.79</td>
+											<td style="width: 47.1973%;">auth (B) = 0.37</td>
+										</tr>
+										<tr>
+											<td style="width: 43.0337%;">hub (N) = 0.0</td>
+											<td style="width: 47.1973%;">auth (N) = 0.66</td>
+										</tr>
+									</tbody>
+								</table>
+								<p>We can see that after Round 4 there is no change in the values of hub and authority score and thus they have converged.</p>
+								<p>Page with highest hub score: BERT</p>
+								<p>Page with highest authority score(s): attention and NMT</p>
+								<p> The python code could be found here: <a href = "/code/hits.py" >hits.py</a> <br>
+
+									References-<br>
+									1. <a href="https://dl.acm.org/doi/abs/10.1145/324133.324140?casa_token=z68ds2yFtUsAAAAA%3ABDK2WRlc-erz1DQExuf5woXZDoYsLHEBuYCR7Irl1XfaqaBAIEqReJLre7YvDbb1adrCvQB1obxAEw">Authoritative sources in a hyperlinked environment-Jon Kleinberg </a> <br>
+									2. <a href="http://pi.math.cornell.edu/~mec/Winter2009/RalucaRemus/Lecture4/lecture4.html">Cornell</a>
+								</p>
+
+							</div>
+
+							<div class="w3-row">
+								<div class="w3-col m8 s12">
+									<p><button class="w3-button w3-padding-large w3-white w3-border" data-toggle="collapse" data-target="#more_5" onclick="new_expand(this)" id="5">READ MORE</button></p>
+								</div>
+								<div class="w3-col m4 w3-hide-small">
+									<p><button class="w3-button w3-padding-large w3-border w3-right" onclick="expandComments(this)" id="5"><b>Comments  </b></button></p>
+								</div>
+							</div>
+							<div class="w3-container utterances" id="comments_5" style="display:none;">
+								<script src="https://utteranc.es/client.js" repo="manishpatel005/manishpatel005.github.io" issue-term="pathname" theme="github-light" crossorigin="anonymous" async>
+								</script>
+							</div>
+						</div>
+					</div>
+
+
+					<!-- END BLOG ENTRIES -->
 				</div>
 
-
-				<!-- Blog entry -->
-				<div class="w3-card-4 w3-margin w3-white">
-					<img src="/blog_images/hubs_cover.png" alt="Hubs and Auth cover" style="width:100%">
-					<div class="w3-container">
-						<h3><b>Information Storage and Retrieval-5</b></h3>
-						<h5>Hubs and Authorities- HITS Algorithm <span class="w3-opacity">September 20, 2020</span></h5>
-					</div>
-
-					<div class="w3-container">
-						
-						<p>Imagine you are developing a search engine for a digital library such as IEEE Explore or arxiv and a user submits a query&nbsp;- <span style="color: #ff0000;">What is attention</span> ? </p>
-						<p>If you have worked in NLP or machine learning you might have heard of this mechanism called <strong>Attention</strong> introduced by <a href="https://arxiv.org/abs/1706.03762">Vaswani et al</a>, in his ground-breaking research paper-&nbsp;<strong>Attention is all you need-&nbsp;</strong>NeurIPS 2017. It was such an important concept that it changed the course of Neural Machine Translation (and of NLP ) and led to neural architecture such as Transformers, and Bidirectional Transformers(BERT) etc. See this blog post by <a href="https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/">Jay Alammar</a> for an amazing explaination on how attention works. </p>
-						<p>Now if you make a simple text based search on all the papers in the library, you will get like million documents containing the term "attention" as it's such a common word. If you make a tf-idf based search then the original paper by Vaswani will get even lower score than the review paper by&nbsp; <a href="https://arxiv.org/pdf/1902.02181.pdf">Galassi</a> as the former have used the term attention only 97 times as opposed to the latter who have used it more than 400 times.&nbsp;</p>
-						<p>So the question i<em>s: how to figure out who is the authentic source of this mechanism called Attention?&nbsp;</em>It turns out that in this network structure of linked environment i.e. if paper A cites paper B then it can be deemed as a link from paper A to paper B, one can use PageRank or HITS algorithm. HITS algorithm was developed by Prof. Jon Kleinberg at Cornell University at the same time when PageRank was developed by Larry and Sergey at Stanford. Let's see how how HITS works.</p>
-						<p><strong>Hyperlink-induced Topic Search</strong> (HITS) is an approach to discover the authoritative sources in context of World Wide Web (www) where the number of pages is enormous and is linked to each other by hyperlinks (incoming and outgoing). But this approach could also be used for the linked structure discussed above.&nbsp;</p>
-						<p><strong>Authorative sources</strong> mean the sources which provide valuable information on the subject and has been considered as the "authority" by others due to its virtue of originality or popularity. For example, for a query on "<em>Texas A&amp;M University"</em>, the homepage of Texas A&amp;M can be considered as the authority.&nbsp; Pages of goverment websites might also be considered as the authorities for the query. These are the pages truly relevant to the given query and are expected by the users from the search engine.</p>
-						<p>However, there is another category of the pages called <strong>hubs</strong>, whose role is to advertise the authoritative pages i.e. they contain links to "authority" pages and help the search engine move in the right direction. For example, "usnews.com" and "timeshighereducation.com" - the sites that ranks the schools can be considered as hubs.&nbsp; </p>
-
-						<p>Thus,</p>
-						<ul>
-							<li>A good hub page for a topic points to many authorative pages on that topic.</li>
-							<li>A good authority page for a topic is pointed to by many good hubs for that topic.</li>
-						</ul>
-						<p>For the query- "what is attention", we would have a network graph like this:</p>
-						
-						<img src="/blog_images/hubs_and_auth.png" alt="hubs_and_authority_example" style="width: 60%"> <br>
-						<p>The idea behind HITS algorithm is to find out the good hubs and authorities for a topic by assigning two numbers to a page: hub score and authority score. To start with something, we first do a regular keyword search for the topic and call the search result as&nbsp;<strong>root set.</strong>&nbsp;Typically, it consists of 200 to 1000 nodes.&nbsp; </p>
-						<img src="/blog_images/root_base_set.png" alt="root_and_base_set" style="width: 60%"> <br>
-						<tt>Fig1. Root set consists of examples from original query while base set consists of root set + incoming and outgoing links</tt><br><br>
-						<p>Then we find all the nodes that are either pointed by the root set or points to the root set. This we call as <strong>base set</strong>( it includes the root set). Typically, it consists of around 5000 nodes.&nbsp;</p>
-						<p>Next we do the following:</p>
-						<ol>
-							<li>For each page x in the base set:</li>
-							<li>Initiliaze x: hub(x) := 1 and auth(x) := 1</li>
-							<li>Repeat the following update until convergence:
-								<ul>
-									<li style="text-align: left;">hub(x) := &sum; auth(x')&nbsp; (where x' is pointed by x)</li>
-									<li style="text-align: left;">auth(x) = &sum; hub(x')&nbsp;&nbsp; (where x' points to x)</li>
-									<li style="text-align: left;">Scale down or normalize the hub(x) and auth(x) by l2 norm (square root of sum of squares)</li>
-								</ul>
-								<img src="/blog_images/combine_hub_auth.png" alt="combine_hubs_and_authority_example" style="width: 80%"> <br>
-							</li>
-							<li>After convergence, the pages with highest hub scores will be the top hubs while the page with highest auth scores will be the top authorities.</li>
-						</ol>
-
-						<p style="text-align: left;">Let us take a small example to understand how it works:</p>
-						
-						<div id="more_5" class="collapse">
-							
-						<img src="/blog_images/hits_example.png" alt="hits_example" style="width: 100%"> <br>
-						<tt>Fig2. Linked structure graph. We assign A to represent attention, B to represent BERT and N to represent NMT in the following example. </tt><br><br>
-						<p style="text-align: left;"><strong>Round 0</strong>: Initialize</p>
-						<table style="border-collapse: collapse; width: 46.8666%;" height="98" border="1">
-							<tbody>
-								<tr>
-									<td style="width: 43.0337%; text-align: center;"><strong>Hubs score</strong></td>
-									<td style="width: 47.1973%; text-align: center;"><strong>Auth score</strong></td>
-								</tr>
-								<tr>
-									<td style="width: 43.0337%;">hub (A) = 1</td>
-									<td style="width: 47.1973%;">auth (A) = 1</td>
-								</tr>
-								<tr>
-									<td style="width: 43.0337%;">hub (B) = 1</td>
-									<td style="width: 47.1973%;">auth (B) = 1</td>
-								</tr>
-								<tr>
-									<td style="width: 43.0337%;">hub (N) = 1</td>
-									<td style="width: 47.1973%;">auth (N) = 1</td>
-								</tr>
-							</tbody>
-						</table>
-
-						<p><strong>Round 1</strong>:</p>
-						<p>First let's calculate the hubs score.</p>
-						<p>Since A points to A itself and N, we add the authority score of A and N from previous round to get the new_hub score for A which is = 1 + 1 = 2.</p>
-						<p>Since B points to A, B and N, we add the authority score of A, B, and N from previous round to get the new_hub score for B which is = 1 + 1 + 1 = 3.</p>
-						<p>Since N does not point anywhere,&nbsp; we have the new_hub score for N which is = 0.</p>
-						<p>The l2 norm for new_hub will be =&nbsp;&radic;(2^2 + 3^2 + 0^ 2) = 3.60</p>
-						<p>Dividing each element of new_hub score, we have new hubs score as follows:</p>
-						<table style="border-collapse: collapse; width: 22.4014%;" height="77" border="1">
-							<tbody>
-								<tr>
-									<td style="width: 100%; text-align: center;">Hubs Score</td>
-								</tr>
-								<tr>
-									<td style="width: 100%;">hub (A) = 0.55</td>
-								</tr>
-								<tr>
-									<td style="width: 100%;">hub (B) = 0.83</td>
-								</tr>
-								<tr>
-									<td style="width: 100%;">hub (N) = 0.0</td>
-								</tr>
-							</tbody>
-						</table>
-						<p>Let's us now calculate the authority score.</p>
-						<p>Since A is pointed to by A and B, we add the hubs score of A and B from previous round to get the new_auth score for A which is = 2</p>
-						<p>Since B is pointed to by B, we add the hubs score of B from previous round to get the new_auth score for B which is = 1</p>
-						<p>&nbsp;As N is pointed to by A and B both, we add the hubs score of A and B from previous round to get the new_auth score for N which is = 2</p>
-						<p>The l2 norm for new_auth will be = &radic;(2^2 + 1^2 + 2^ 2) = 3</p>
-						<p>Dividing each element of new_hub score, we have new auths score as follows:</p>
-						<table style="border-collapse: collapse; width: 22.4014%; height: 72px;" height="77" border="1">
-							<tbody>
-								<tr style="height: 18px;">
-									<td style="width: 100%; text-align: center; height: 18px;">Auth Score</td>
-								</tr>
-								<tr style="height: 18px;">
-									<td style="width: 100%; height: 18px;">auth (A) = 0.67</td>
-								</tr>
-								<tr style="height: 18px;">
-									<td style="width: 100%; height: 18px;">auth (B) = 0.33</td>
-								</tr>
-								<tr style="height: 18px;">
-									<td style="width: 100%; height: 18px;">auth (N) = 0.67</td>
-								</tr>
-							</tbody>
-						</table>
-						<p>Thus round 1 end can be summarized as follows:</p>
-						<table style="border-collapse: collapse; width: 46.8666%;" height="98" border="1">
-							<tbody>
-								<tr>
-									<td style="width: 43.0337%; text-align: center;"><strong>Hubs score</strong></td>
-									<td style="width: 47.1973%; text-align: center;"><strong>Auth score</strong></td>
-								</tr>
-								<tr>
-									<td style="width: 43.0337%;">hub (A) = 0.55</td>
-									<td style="width: 47.1973%;">auth (A) = 0.67</td>
-								</tr>
-								<tr>
-									<td style="width: 43.0337%;">hub (B) = 0.83</td>
-									<td style="width: 47.1973%;">auth (B) = 0.33</td>
-								</tr>
-								<tr>
-									<td style="width: 43.0337%;">hub (N) = 0.0</td>
-									<td style="width: 47.1973%;">auth (N) = 0.67</td>
-								</tr>
-							</tbody>
-						</table>
-						<p><strong>Round 2:&nbsp;</strong></p>
-						<p>Similar to the previous round, we will calculate first the hubs score and then authority score. </p>
-						<p>Since A points to A and N, we add the authority score of A and N from previous round to get the new _hub score for A which is = 0.67 + 0.67 = 1.34</p>
-						<p>Since B points to A,B and N, the new_hub score for B&nbsp; = 0.67 + 0.33 + 0.67 = 1.67</p>
-						<p>As N does not point to anything, the new_hub score for N = 0</p>
-						<p>The l2 norm for new_hub is: &radic;(1.34^2 +1.67^2 + 0) = 2.14</p>
-						<p>Dividing each element of new_hub score, we have new hub score as follows:</p>
-						<table style="border-collapse: collapse; width: 22.4014%; height: 72px;" height="77" border="1">
-							<tbody>
-								<tr style="height: 18px;">
-									<td style="width: 100%; text-align: center; height: 18px;">Hub Score</td>
-								</tr>
-								<tr style="height: 18px;">
-									<td style="width: 100%; height: 18px;">hub (A) = 0.63</td>
-								</tr>
-								<tr style="height: 18px;">
-									<td style="width: 100%; height: 18px;">hub (B) = 0.78</td>
-								</tr>
-								<tr style="height: 18px;">
-									<td style="width: 100%; height: 18px;">hub (N) = 0.0</td>
-								</tr>
-							</tbody>
-						</table>
-						<p>Since A is pointed to by A and B, we add the hubs score of A and B from previous round to get the new_auth score for A which is = 0.55 + 0.83 = 1.38</p>
-						<p>Since B is pointed to by B , the new_auth score for B&nbsp; = 0.83 </p>
-						<p>As N is pointed to by A and B, the new_auth score for N = 0.55 + 0.83 = 1.38</p>
-						<p>The l2 norm for new_auth is: &radic;(1.38^2 +0.83^2 + 1.38^2) = 2.12</p>
-						<p>Dividing each element of new_auth score, we have new auth score as follows:</p>
-						<table style="border-collapse: collapse; width: 22.4014%; height: 72px;" height="77" border="1">
-							<tbody>
-								<tr style="height: 18px;">
-									<td style="width: 100%; text-align: center; height: 18px;">Hub Score</td>
-								</tr>
-								<tr style="height: 18px;">
-									<td style="width: 100%; height: 18px;">auth (A) = 0.65</td>
-								</tr>
-								<tr style="height: 18px;">
-									<td style="width: 100%; height: 18px;">auth (B) = 0.39</td>
-								</tr>
-								<tr style="height: 18px;">
-									<td style="width: 100%; height: 18px;">auth (N) = 0.65</td>
-								</tr>
-							</tbody>
-						</table>
-						<p></p>
-						<p>Thus round 2 end can be summarized as follows:</p>
-						<table style="border-collapse: collapse; width: 46.8666%;" height="98" border="1">
-							<tbody>
-								<tr>
-									<td style="width: 43.0337%; text-align: center;"><strong>Hubs score</strong></td>
-									<td style="width: 47.1973%; text-align: center;"><strong>Auth score</strong></td>
-								</tr>
-								<tr>
-									<td style="width: 43.0337%;">hub (A) = 0.63</td>
-									<td style="width: 47.1973%;">auth (A) = 0.65</td>
-								</tr>
-								<tr>
-									<td style="width: 43.0337%;">hub (B) = 0.78</td>
-									<td style="width: 47.1973%;">auth (B) = 0.39</td>
-								</tr>
-								<tr>
-									<td style="width: 43.0337%;">hub (N) = 0.0</td>
-									<td style="width: 47.1973%;">auth (N) = 0.65</td>
-								</tr>
-							</tbody>
-						</table>
-
-						<p style="text-align: left;"><strong>Round 3</strong> Calculating in a similar manner we have,</p>
-						<table style="border-collapse: collapse; width: 46.8666%;" height="98" border="1">
-							<tbody>
-								<tr>
-									<td style="width: 43.0337%; text-align: center;"><strong>Hubs score</strong></td>
-									<td style="width: 47.1973%; text-align: center;"><strong>Auth score</strong></td>
-								</tr>
-								<tr>
-									<td style="width: 43.0337%;">hub (A) = 0.61</td>
-									<td style="width: 47.1973%;">auth (A) = 0.66</td>
-								</tr>
-								<tr>
-									<td style="width: 43.0337%;">hub (B) = 0.79</td>
-									<td style="width: 47.1973%;">auth (B) = 0.36</td>
-								</tr>
-								<tr>
-									<td style="width: 43.0337%;">hub (N) = 0.0</td>
-									<td style="width: 47.1973%;">auth (N) = 0.66</td>
-								</tr>
-							</tbody>
-						</table>
-
-						<p style="text-align: left;"><strong>Round 4</strong></p>
-						<table style="border-collapse: collapse; width: 46.8666%;" height="98" border="1">
-							<tbody>
-								<tr>
-									<td style="width: 43.0337%; text-align: center;"><strong>Hubs score</strong></td>
-									<td style="width: 47.1973%; text-align: center;"><strong>Auth score</strong></td>
-								</tr>
-								<tr>
-									<td style="width: 43.0337%;">hub (A) = 0.62</td>
-									<td style="width: 47.1973%;">auth (A) = 0.66</td>
-								</tr>
-								<tr>
-									<td style="width: 43.0337%;">hub (B) = 0.79</td>
-									<td style="width: 47.1973%;">auth (B) = 0.37</td>
-								</tr>
-								<tr>
-									<td style="width: 43.0337%;">hub (N) = 0.0</td>
-									<td style="width: 47.1973%;">auth (N) = 0.66</td>
-								</tr>
-							</tbody>
-						</table>
-
-						<p style="text-align: left;"><strong>Round 5</strong></p>
-						<table style="border-collapse: collapse; width: 46.8666%;" height="98" border="1">
-							<tbody>
-								<tr>
-									<td style="width: 43.0337%; text-align: center;"><strong>Hubs score</strong></td>
-									<td style="width: 47.1973%; text-align: center;"><strong>Auth score</strong></td>
-								</tr>
-								<tr>
-									<td style="width: 43.0337%;">hub (A) = 0.62</td>
-									<td style="width: 47.1973%;">auth (A) = 0.66</td>
-								</tr>
-								<tr>
-									<td style="width: 43.0337%;">hub (B) = 0.79</td>
-									<td style="width: 47.1973%;">auth (B) = 0.37</td>
-								</tr>
-								<tr>
-									<td style="width: 43.0337%;">hub (N) = 0.0</td>
-									<td style="width: 47.1973%;">auth (N) = 0.66</td>
-								</tr>
-							</tbody>
-						</table>
-						<p>We can see that after Round 4 there is no change in the values of hub and authority score and thus they have converged.</p>
-						<p>Page with highest hub score: BERT</p>
-						<p>Page with highest authority score(s): attention and NMT</p>
-						<p> The python code could be found here: <a href = "/code/hits.py" >hits.py</a> <br>
-							
-						References-<br>
-						1. <a href="https://dl.acm.org/doi/abs/10.1145/324133.324140?casa_token=z68ds2yFtUsAAAAA%3ABDK2WRlc-erz1DQExuf5woXZDoYsLHEBuYCR7Irl1XfaqaBAIEqReJLre7YvDbb1adrCvQB1obxAEw">Authoritative sources in a hyperlinked environment-Jon Kleinberg </a> <br>
-						2. <a href="http://pi.math.cornell.edu/~mec/Winter2009/RalucaRemus/Lecture4/lecture4.html">Cornell</a>
-						</p>
-							
-						</div>
-						
-					<div class="w3-row">
-						<div class="w3-col m8 s12">
-							<p><button class="w3-button w3-padding-large w3-white w3-border" data-toggle="collapse" data-target="#more_5"><b>READ MORE »</b></button></p>
-						</div>
-						<div class="w3-col m4 w3-hide-small">
-							<p><button class="w3-button w3-padding-large w3-border w3-right" onclick="expandComments(this)" id="5"><b>Comments  </b></button></p>
-						</div>
-					</div>
-					<div class="w3-container utterances" id="comments_5" style="display:none;">
-						<script src="https://utteranc.es/client.js" repo="manishpatel005/manishpatel005.github.io" issue-term="pathname" theme="github-light" crossorigin="anonymous" async>
-						</script>
-					</div>
-				</div>
-			</div>
-
-
-			<!-- END BLOG ENTRIES -->
-		</div>
-
-		<!-- Introduction menu -->
-		<div class="w3-col l3">
-			<!-- About Card -->
-			<div class="w3-card w3-margin w3-margin-top">
-				<!--<img src="/w3images/avatar_g.jpg" style="width:100%"> -->
-				<div class="w3-container w3-white">
-					<h4><b>Manish Patel</b></h4>
-					<p>Howdy!<br>
-						My name is Manish and I am a software engineer in Systems, Information Retrieval and Machine Learning. 
-						I completed my Masters from Texas A&amp;M where I worked on Information
-						Storage and Retrieval, Natural Language Understanding and Distributed Systems.
-						I have interned in Google Search team (Mountain View, US) and have worked in C-DOT (New Delhi, India) as Research Engineer. 
-						I did my undergrad in Computer Science from NIT-Allahabad. 
-						I love solving challenging problems in the field of algorithm design and have 7+ years of experience in algorithm design and coding.
-					</p>
-					<p>Having brought-up in various parts of India, I enjoy traveling to new
-						places and making new friends. In my free time, I love reading English
-						classics,particulary realist fiction, and playing badminton. Some of
-						my favorite books are - Anna Karenina, The Count of Monte Cristo, The
-						Picture of Dorian Gray, 1984, Les Miserables, Karmabhoomi, The Art of
-						War, Great Expectations, The Odyssey etc. In badminton, my favorite players are-
-						Lee Chong Wei, Lin Dan(sad to hear his retirement), Kento Momota,
-						PV Sindu and Victor Axelson.
-					</p>
-					<p>
-						The name of this blog --The Anvikshik-- comes from a Sanskrit word Anviskhiki which roughly means the science of searching.
-						<!--whether
+				<!-- Introduction menu -->
+				<div class="w3-col l3">
+					<!-- About Card -->
+					<div class="w3-card w3-margin w3-margin-top">
+						<!--<img src="/w3images/avatar_g.jpg" style="width:100%"> -->
+						<div class="w3-container w3-white">
+							<h4><b>Manish Patel</b></h4>
+							<p>Howdy!<br>
+								My name is Manish and I am a software engineer in Systems, Information Retrieval and Machine Learning. 
+								I completed my Masters from Texas A&amp;M where I worked on Information
+								Storage and Retrieval, Natural Language Understanding and Distributed Systems.
+								I have interned in Google Search team (Mountain View, US) and have worked in C-DOT (New Delhi, India) as Research Engineer. 
+								I did my undergrad in Computer Science from NIT-Allahabad. 
+								I love solving challenging problems in the field of algorithm design and have 7+ years of experience in algorithm design and coding.
+							</p>
+							<p>Having brought-up in various parts of India, I enjoy traveling to new
+								places and making new friends. In my free time, I love reading English
+								classics,particulary realist fiction, and playing badminton. Some of
+								my favorite books are - Anna Karenina, The Count of Monte Cristo, The
+								Picture of Dorian Gray, 1984, Les Miserables, Karmabhoomi, The Art of
+								War, Great Expectations, The Odyssey etc. In badminton, my favorite players are-
+								Lee Chong Wei, Lin Dan(sad to hear his retirement), Kento Momota,
+								PV Sindu and Victor Axelson.
+							</p>
+							<p>
+								The name of this blog --The Anvikshik-- comes from a Sanskrit word Anviskhiki which roughly means the science of searching.
+								<!--whether
 inwards(spiritual) or outwards(reasoning/logic). -->Since my interests lie in the
-						field of information retrieval, I couldn't find a better word than this to describe the blog.
-						My intention of creating this blog is to share my enthusiasm of this niche domain and encourage people to generate
-						new ideas to solve the challenging problems of today.
-					</p>
-				</div>
-			</div>
-			<hr>
+								field of information retrieval, I couldn't find a better word than this to describe the blog.
+								My intention of creating this blog is to share my enthusiasm of this niche domain and encourage people to generate
+								new ideas to solve the challenging problems of today.
+							</p>
+						</div>
+					</div>
+					<hr>
 
 
-			<!-- Posts -->
-			<!-- 
+					<!-- Posts -->
+					<!-- 
 <div class="w3-card w3-margin">
 <div class="w3-container w3-padding">
 <h4>Popular Posts</h4>
@@ -802,81 +802,96 @@ inwards(spiritual) or outwards(reasoning/logic). -->Since my interests lie in th
 </div>
 <hr> 
 -->
-			<!-- Labels / tags -->
-			<div class="w3-card w3-margin">
-				<div class="w3-container w3-padding">
-					<h4>Tags</h4>
-				</div>
-				<div class="w3-container w3-white">
-					<p><span class="w3-tag w3-light-grey w3-margin-bottom">Information Retrieval</span> 
-						<span class="w3-tag w3-light-grey w3-margin-bottom">SEO</span> 
-						<span class="w3-tag w3-light-grey w3-margin-bottom">TF-IDF</span>
-						<span class="w3-tag w3-light-grey w3-margin-bottom">Vector Space</span>
-						<span class="w3-tag w3-light-grey w3-margin-bottom">BM25</span>
-						<span class="w3-tag w3-light-grey w3-margin-bottom">Hubs and Authorities</span>
-						<span class="w3-tag w3-light-grey w3-margin-bottom">HITS</span>
-						<span class="w3-tag w3-light-grey w3-margin-bottom">PageRank</span>
-						<span class="w3-tag w3-light-grey w3-margin-bottom">Google Search</span>
-						<span class="w3-tag w3-light-grey w3-margin-bottom">Recommder Systems</span>
-						<!--<span class="w3-tag w3-light-grey w3-small w3-margin-bottom"><img src="https://hitcounter.pythonanywhere.com/count/tag.svg" alt="Hits"></span>
+					<!-- Labels / tags -->
+					<div class="w3-card w3-margin">
+						<div class="w3-container w3-padding">
+							<h4>Tags</h4>
+						</div>
+						<div class="w3-container w3-white">
+							<p><span class="w3-tag w3-light-grey w3-margin-bottom">Information Retrieval</span> 
+								<span class="w3-tag w3-light-grey w3-margin-bottom">SEO</span> 
+								<span class="w3-tag w3-light-grey w3-margin-bottom">TF-IDF</span>
+								<span class="w3-tag w3-light-grey w3-margin-bottom">Vector Space</span>
+								<span class="w3-tag w3-light-grey w3-margin-bottom">BM25</span>
+								<span class="w3-tag w3-light-grey w3-margin-bottom">Hubs and Authorities</span>
+								<span class="w3-tag w3-light-grey w3-margin-bottom">HITS</span>
+								<span class="w3-tag w3-light-grey w3-margin-bottom">PageRank</span>
+								<span class="w3-tag w3-light-grey w3-margin-bottom">Google Search</span>
+								<span class="w3-tag w3-light-grey w3-margin-bottom">Recommder Systems</span>
+								<!--<span class="w3-tag w3-light-grey w3-small w3-margin-bottom"><img src="https://hitcounter.pythonanywhere.com/count/tag.svg" alt="Hits"></span>
 -->
-					</p>
-				</div>
-			</div>
+							</p>
+						</div>
+					</div>
 
-			<!-- END Introduction Menu -->
+					<!-- END Introduction Menu -->
+				</div>
+
+				<!-- END GRID -->
+			</div><br>
+
+			<!-- END w3-content -->
 		</div>
 
-		<!-- END GRID -->
-		</div><br>
+		<!-- Footer -->
+		<footer class="w3-container w3-dark-grey w3-padding-32 w3-margin-top">
+			<button class="w3-button w3-black w3-disabled w3-padding-large w3-margin-bottom">Previous</button>
+			<button class="w3-button w3-black w3-disabled w3-padding-large w3-margin-bottom">Next »</button>
+			<!--<p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p> -->
+		</footer>
 
-	<!-- END w3-content -->
-	</div>
-
-<!-- Footer -->
-<footer class="w3-container w3-dark-grey w3-padding-32 w3-margin-top">
-	<button class="w3-button w3-black w3-disabled w3-padding-large w3-margin-bottom">Previous</button>
-	<button class="w3-button w3-black w3-disabled w3-padding-large w3-margin-bottom">Next »</button>
-	<!--<p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p> -->
-</footer>
-
-<script>
-	function expandRead(button) {
-		var id = button.id;
-		var dots_id = 'dots_' + id;
-		var more_id = 'more_' + id;
+		<script>
+			function expandRead(button) {
+				var id = button.id;
+				var dots_id = 'dots_' + id;
+				var more_id = 'more_' + id;
 
 
-		var dots = document.getElementById(dots_id);
-		var moreText = document.getElementById(more_id);
-		var btnText = document.getElementById(id);
+				var dots = document.getElementById(dots_id);
+				var moreText = document.getElementById(more_id);
+				var btnText = document.getElementById(id);
 
 
-		if (dots.style.display === "none") {
-			dots.style.display = "inline";
-			btnText.innerHTML = "Read more";
-			moreText.style.display = "none";
+				if (dots.style.display === "none") {
+					dots.style.display = "inline";
+					btnText.innerHTML = "Read more";
+					moreText.style.display = "none";
 
-		} else {
-			dots.style.display = "none";
-			btnText.innerHTML = "Read less";
-			moreText.style.display = "inline";
-		}
-	}
+				} else {
+					dots.style.display = "none";
+					btnText.innerHTML = "Read less";
+					moreText.style.display = "inline";
+				}
 
-	function expandComments(button) {
-		var id = button.id;
-		var comments_id = 'comments_' + id;
-		var moreComments = document.getElementById(comments_id);
+			}
 
-		if (moreComments.style.display === "none") {
-			moreComments.style.display = "block";
-		} else {
-			moreComments.style.display = "none";
-		}
-	}
+			function new_expand(button){
+				var id = button.id;
+				// Toggle button text
+				var btnElem = document.getElementById(id);
 
-</script>
-</body>
+				if (btnElem.innerHTML === "READ MORE"){
+					btnElem.innerHTML = "READ LESS";
+				} else {
+					btnElem.innerHTML = "READ MORE";
+				}
+
+			}
+
+			function expandComments(button) {
+				var id = button.id;
+				var comments_id = 'comments_' + id;
+				var moreComments = document.getElementById(comments_id);
+
+				if (moreComments.style.display === "none") {
+					moreComments.style.display = "block";
+				} else {
+					moreComments.style.display = "none";
+				}
+			}
+
+
+		</script>
+	</body>
 
 </html>
