@@ -23,7 +23,11 @@
 	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 	<meta name="google-site-verification" content="bvg4InVMcXnOLQELzO9Mb08WHTUcPh2SN9Ftq1-D7Hc" />
-
+	<!-- Following three are for collapsible read more button starting  from id 5-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	
 	<body class="w3-light-grey">
 
 		<!-- w3-content defines a container for fixed size centered content, 
@@ -370,15 +374,15 @@ and is wrapped around the whole page content, except for the footer in this exam
 
 						<div class="w3-container">
 							<p>
-
 								Today I am going to clarify the concept of tf-idf using a small example.
-								Suppose that we have two documents:
+								Suppose that we have two documents:</p>
 							<blockquote>
 								<p>Doc1: &quot;one small step for man one giant leap for mankind &quot;</p>
 							</blockquote>
 							<blockquote>
 								<p>Doc2: &quot;one has to take small steps to reach big goals&quot;</p>
 							</blockquote>
+							<p>
 							If we calculate the frequency of each word then it would be look something like this:
 							<img src="/blog_images/tfidf_tut.png" alt="example-tfidf" style="width: 90%"> <br>
 							To calculate the tf-idf of "one", we first calculate its tf which is the raw-frequency.
@@ -437,8 +441,7 @@ and is wrapped around the whole page content, except for the footer in this exam
 					</div>
 
 					<div class="w3-container">
-						<p>
-
+						
 						<p>Imagine you are developing a search engine for a digital library such as IEEE Explore or arxiv and a user submits a query&nbsp;- <span style="color: #ff0000;">What is attention</span> ? </p>
 						<p>If you have worked in NLP or machine learning you might have heard of this mechanism called <strong>Attention</strong> introduced by <a href="https://arxiv.org/abs/1706.03762">Vaswani et al</a>, in his ground-breaking research paper-&nbsp;<strong>Attention is all you need-&nbsp;</strong>NeurIPS 2017. It was such an important concept that it changed the course of Neural Machine Translation (and of NLP ) and led to neural architecture such as Transformers, and Bidirectional Transformers(BERT) etc. See this blog post by <a href="https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/">Jay Alammar</a> for an amazing explaination on how attention works. </p>
 						<p>Now if you make a simple text based search on all the papers in the library, you will get like million documents containing the term "attention" as it's such a common word. If you make a tf-idf based search then the original paper by Vaswani will get even lower score than the review paper by&nbsp; <a href="https://arxiv.org/pdf/1902.02181.pdf">Galassi</a> as the former have used the term attention only 97 times as opposed to the latter who have used it more than 400 times.&nbsp;</p>
@@ -453,7 +456,7 @@ and is wrapped around the whole page content, except for the footer in this exam
 							<li>A good authority page for a topic is pointed to by many good hubs for that topic.</li>
 						</ul>
 						<p>For the query- "what is attention", we would have a network graph like this:</p>
-						<span id="dots_5">...</span><span id="more_5">
+						
 						<img src="/blog_images/hubs_and_auth.png" alt="hubs_and_authority_example" style="width: 60%"> <br>
 						<p>The idea behind HITS algorithm is to find out the good hubs and authorities for a topic by assigning two numbers to a page: hub score and authority score. To start with something, we first do a regular keyword search for the topic and call the search result as&nbsp;<strong>root set.</strong>&nbsp;Typically, it consists of 200 to 1000 nodes.&nbsp; </p>
 						<img src="/blog_images/root_base_set.png" alt="root_and_base_set" style="width: 60%"> <br>
@@ -475,6 +478,9 @@ and is wrapped around the whole page content, except for the footer in this exam
 						</ol>
 
 						<p style="text-align: left;">Let us take a small example to understand how it works:</p>
+						
+						<div id="more_5" class="collapse">
+							
 						<img src="/blog_images/hits_example.png" alt="hits_example" style="width: 100%"> <br>
 						<tt>Fig2. Linked structure graph. We assign A to represent attention, B to represent BERT and N to represent NMT in the following example. </tt><br><br>
 						<p style="text-align: left;"><strong>Round 0</strong>: Initialize</p>
@@ -701,15 +707,17 @@ and is wrapped around the whole page content, except for the footer in this exam
 						<p>Page with highest hub score: BERT</p>
 						<p>Page with highest authority score(s): attention and NMT</p>
 						<p> The python code could be found here: <a href = "/code/hits.py" >hits.py</a> <br>
+							
 						References-<br>
 						1. <a href="https://dl.acm.org/doi/abs/10.1145/324133.324140?casa_token=z68ds2yFtUsAAAAA%3ABDK2WRlc-erz1DQExuf5woXZDoYsLHEBuYCR7Irl1XfaqaBAIEqReJLre7YvDbb1adrCvQB1obxAEw">Authoritative sources in a hyperlinked environment-Jon Kleinberg </a> <br>
 						2. <a href="http://pi.math.cornell.edu/~mec/Winter2009/RalucaRemus/Lecture4/lecture4.html">Cornell</a>
 						</p>
-						</span>
-
+							
+						</div>
+						
 					<div class="w3-row">
 						<div class="w3-col m8 s12">
-							<p><button class="w3-button w3-padding-large w3-white w3-border" onclick="expandRead(this)" id="5"><b>READ MORE »</b></button></p>
+							<p><button class="w3-button w3-padding-large w3-white w3-border" data-toggle="collapse" data-target="#more_5"><b>READ MORE »</b></button></p>
 						</div>
 						<div class="w3-col m4 w3-hide-small">
 							<p><button class="w3-button w3-padding-large w3-border w3-right" onclick="expandComments(this)" id="5"><b>Comments  </b></button></p>
