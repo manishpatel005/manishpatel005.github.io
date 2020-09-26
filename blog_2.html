@@ -67,7 +67,7 @@ and is wrapped around the whole page content, except for the footer in this exam
 							where d is the damping factor(a value between 0.8 and 0.9), N is the total number of webpages, and v is the set of webpages that have a incoming link to u.<br/><br/>
 							<p><em>The main intuition is that PageRank is like water flowing through the network of nodes and links and getting accumulated at important nodes. Each node divides its water equally among the outgoing links. The extra factor 1-d/N represents the evaporation that allows the water to circulate among all the nodes othwerise it will get stuck at the important or sink nodes. The water at every node soon reaches the steady-state and this steady state value is called PageRank for that node.</em></p>
 							<p><strong>Step 1</strong>: Assume, PageRank of all nodes to be 1 and the dampling factor d to be 0.80. It doesn't matter what value of PageRank you start with since the PageRank values converges to the same steady-state values.  For a detailed explaination, see the reference number 2.</p>
-							
+
 							<div id="more_6" class="collapse">
 								<p><strong>Step 2</strong>:&nbsp; Calculate new PageRanks for individual pages-</p>
 								<ol style="list-style-type: lower-alpha;">
@@ -116,6 +116,66 @@ and is wrapped around the whole page content, except for the footer in this exam
 							</div>
 						</div>
 					</div>
+
+
+					<!-- Blog entry -->
+					<div class="w3-card-4 w3-margin w3-white">
+						<div class="w3-container">
+							<h3><b>General Discussion</b></h3>
+							<h5>Correlation and Causation, <span class="w3-opacity">September 26, 2020</span></h5>
+						</div>
+
+						<div class="w3-container">
+							<p>It is such an interesting topic that I could not stop myself from writing a post. Every day, when I read newspapers or watch television, I see the following type of arguments:</p>
+							<ul>
+								<li>A tenant moves into an apartment. The owner meets with an accident and breaks his leg. He blames the tenant's arrival for the misfortune.</li>
+								<li>A cat crossed the road while the woman was going to market. Something bad is going to happen to her or the family&nbsp;as the cat crossing one's path is a bad omen.</li>
+								<li>Whenever I go to a particular temple, my wishes are always heard.</li>
+								<li>If a black crow crows on top of your house, you are going to have a guest come over soon at your house.&nbsp;</li>
+								<li>Whenever Mr. X leaves his house and goes for a walk, it rains.</li>
+								<li>One should not travel towards the east on Mondays and Saturdays.&nbsp;</li>
+								<li>Shaving on Saturdays can bring you bad luck.&nbsp;</li>
+							</ul>
+							<p>I could go on and on. I hope you got the idea. It sounds bewildering that a lot of people still believe in these kinds of ideas. I asked a few people their reason for belief and they said it's because their ancestors had believed in them and thus they believe too. A few said&nbsp;they had experienced it themselves and thus believe in it.&nbsp;</p>
+							<p>The question is- Are these people right or wrong? Frederick Nietzsche, a great German philosopher would have said- nothing is right or wrong, it just depends upon the perspective. I would like to take a logical approach to this question. There are two things happening here- correlation and causation. Let's see what they mean.</p>
+							<blockquote>
+								<p><strong>Correlation</strong>&nbsp;means there is a relationship or pattern between the values of two variables. For e.g if the sales of ice-cream increase with the sales of ACs then there is a correlation (positive) between sales of ACs. Similary, if the sales of ice-cream increase when the sales of jackets decrease, then there is a correlation(negative) between sales of ice-cream and sales of jackets.</p>
+							</blockquote>
+							<p>On the other hand,&nbsp;</p>
+							<blockquote>
+								<p><strong>Causation</strong>&nbsp;means that one event causes another event to occur. For e.g the increase in sales of ice-cream and increase in sales of ACs happened due to an increase in temperature. Similary, the increase in sales of ice-cream and decrease in sales of jacket due to an increase in temperature.&nbsp;</p>
+							</blockquote>
+							<p>Thus, we can see that although these concepts seem very similar, they are very different. And the error in recognizing when one has happened but not the other, can lead to types of argument showed at the beginning of this post.</p>
+							<p>When we say that event A has happened and event B has happened either&nbsp;concurrently&nbsp;or one after the other, then we say that these two are&nbsp;<strong>random&nbsp;events</strong>&nbsp;and have just taken place. There may or may not be a relation between them. If an increase in quality or quantity of one event is marked with an increase in&nbsp;quality or quantity of another event then we say these are&nbsp;<strong>positively correlated</strong>&nbsp;or&nbsp;an increase in quality or quantity of one event is marked with a decrease in&nbsp;quality or quantity of another event then we say these are&nbsp;<strong>negatively correlated.&nbsp;</strong> If there is no such increase or decrease then they are <strong>uncorrelated.&nbsp;</strong>An example of uncorrelated events could be sales of ice-cream and sales of cell-phones since one is independent of the other in general.<br /><br />Now, in order to prove that one event has caused the other to happen then we need to&nbsp;show the&nbsp;<strong>causality.&nbsp;</strong>We need to show that&nbsp;there is a third factor that may be causing both variables to change else we attribute it to coincidence. And it turns out most of the time, for a causal relationship people have been able to find the actual causing factor. Let's take each example and see how can we prove or disprove the statements.&nbsp;</p>
+							<ul>
+								<li>&nbsp;"<em>A tenant moves into an apartment. The owner meets with an accident and breaks his leg. He blames the tenant's arrival for the misfortune</em>". These two are uncorrelated events. However, if the tenant kept something on the stairs which the owner couldn't see and tripped on it leading to the accident then this becomes a causal relationship.&nbsp;</li>
+								<li>"<em>A cat crossed the road while the woman was going to market. Something bad is going to happen to her or the family&nbsp;as the cat crossing one's path is a bad omen</em>". Again, the crossing of the road by the cat is not related to the ill-fortune of women unless the cat had some disease that could be transmitted to humans through the air like Coronavirus.</li>
+								<li>"<em>Whenever I go to a particular temple, my wishes are always heard."&nbsp;</em> Maybe you always go to the temple when you are confident of your actions or the situation seems to be favorable.</li>
+								<li><em>"If a black crow crows on top of your house, you are going to have a guest come over soon at your house."</em> This could happen if the crow watches the people coming to your house and only crows when it sees a familiar face. Or maybe your neighbor watches the crow and decides to pay you a visit if they liked the crow's voice.&nbsp;</li>
+								<li><em>"Whenever Mr. X leaves his house and goes for a walk, it rains."&nbsp;</em>Mr. X lives in a house with no air-conditioning system and when the humidity becomes unbearable he decides to take a walk. High humidity makes the cloud precipitate.&nbsp;</li>
+								<li><em>"One should not travel towards the east on Mondays and Saturdays."&nbsp;</em> This one is beyond my ken. If you could think up of a reason then please let me know.</li>
+								<li><em>"Shaving on Saturdays can bring you bad luck."&nbsp;</em>You may be a working person who doesn't get time to shave during weekdays so that when you save on Saturdays you appear to be young and immature. Thus, people do not take you seriously during one or two days or you consider it to be your ill-fate.</li>
+							</ul>
+							<p>&nbsp;We can see that it requires us to dig deeper to search the actual cause. Most people, following Netwon's first law, tend to remain&nbsp;passive and follow whatever people have said in the past without actually questioning it. This leads to a society where superstitions and beliefs overshadow science and common-sense. Thus, it becomes necessary to question all such "confoundings" we see everyday around in our life.</p>
+							<p>Anything which is just a coincidence is of no practical use. Just imagine, if the people who made the airplanes (Wright bros) would have said- We see that whenever we attach wings to a plane, it flies. Now, if they would not have found out the actual mechanics of it, we could never have trusted a plane to fly with since planes without wings also fly (helicopters). Thus, if you believe in planes and fly in it, you should think about not leaving things to coincidence.&nbsp;</p>
+							<p><strong>PS:&nbsp;</strong>Interestingly, there is a name for these types of fallacies in Latin: <em>cum hoc ergo propter hoc&nbsp;</em> and <a href="https://en.wikipedia.org/wiki/Post_hoc_ergo_propter_hoc">post hoc ergo propter hoc</a><em>.&nbsp;</em>Follow the links to know more about it.&nbsp;</p>
+							
+							<div class="w3-row">
+								<div class="w3-col m8 s12">
+									<p><!--<button class="w3-button w3-padding-large w3-white w3-border" onclick="new_expand(this)" id="7"></button>--></p>
+								</div>
+								<div class="w3-col m4 w3-hide-small">
+									<p><button class="w3-button w3-padding-large w3-border w3-right" onclick="expandComments(this)" id="7"><b>Comments  </b></button></p>
+								</div>
+							</div>
+							<div class="w3-container utterances" id="comments_7" style="display:none;">
+								<script src="https://utteranc.es/client.js" repo="manishpatel005/manishpatel005.github.io" issue-term="pathname" theme="github-light" crossorigin="anonymous" async>
+								</script>
+							</div>
+						</div>
+					</div>
+
+
 					<hr>
 					<!-- END BLOG ENTRIES -->
 				</div>
