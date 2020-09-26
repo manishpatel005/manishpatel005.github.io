@@ -1,0 +1,230 @@
+<html>
+	<title>Blog-Manish Patel</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+	<style>
+		body,
+		h1,
+		h2,
+		h3,
+		h4,
+		h5 {
+			font-family: "Raleway", sans-serif
+		}
+
+		span[id^="more"] {
+			display: none;
+		}
+
+	</style>
+	<!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script> -->
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+	<meta name="google-site-verification" content="bvg4InVMcXnOLQELzO9Mb08WHTUcPh2SN9Ftq1-D7Hc" />
+	<!-- Following three are for collapsible read more button starting  from id 5-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+	<body class="w3-light-grey">
+
+		<!-- w3-content defines a container for fixed size centered content, 
+and is wrapped around the whole page content, except for the footer in this example -->
+		<div class="w3-content" style="max-width:1400px">
+
+			<!-- Header -->
+			<header class="w3-container w3-center w3-padding-32">
+				<h1><b>The Anvikshik</b></h1>
+				<!--<p>Welcome to the blog of <span class="w3-tag">Manish</span></p>-->
+			</header>
+
+			<!-- Grid -->
+			<div class="w3-row">
+				<!-- Blog entries -->
+				<div class="w3-col l9 s12">
+					<!-- Blog entry -->
+					<div class="w3-card-4 w3-margin w3-white">
+						<img src="/blog_images/PageRank_Title.png" alt="PR" style="width:100%">
+						<div class="w3-container">
+							<h3><b>Information Storage and Retrieval-6</b></h3>
+							<h5>Page Rank, <span class="w3-opacity">September 24, 2020</span></h5>
+						</div>
+
+						<div class="w3-container">
+							<p>In the last post, we saw how the concept of hubs and authorities can help in identifying the relevant pages for a query on the web or a corpus of documents. Today,&nbsp;we will look into an interesting algorithm called PageRank developed by Larry Page and Sergey Brin when they were studying at Stanford. The motivation behind this algorithm was to look for a way to rank the web pages which are not only hetergenous in nature but also are not controlled by any central authority.</p>
+
+							<p>The main idea behind this algorithm is to use the "backlinks" to increase the importance of any webpage. For e.g if an Information Retrieval course cites this blog post, then PageRank of my web page will increase. Furthermore, if the course happens to be from MIT/Stanford/Berkeley etc. then it would increase the PageRank of this blog even more i.e backlinks from important pages are signficant than backlinks from average pages. For example, in the title figure where size represents PageRank, we can see that page E has higher PageRank than page G of the same row even though it has fewer backlinks. This is because one of the links to E comes from an important page L and thus is of higher importance.&nbsp;</p>
+							<p><strong>Tutorial&nbsp;on how to calculate PageRank:</strong></p>
+							<p><br />There are two ways to calculate the PageRank- one is using Matrices and Eigenvalues (refer&nbsp;<a href="https://nlp.stanford.edu/IR-book/pdf/21link.pdf">IR_STANFORD</a> for an example) and the another is using "waterflow" model. I will be using the "waterflow" model to explain how PageRank is calculated. Let the take the example from previous post shown in the figure-</p>
+							<img src="/blog_images/hits_example.png" alt="hits_example_prev_post" style="width: 80%"><br/>
+							<tt>Fig1. Linked structure graph. We assign A to represent attention, B to represent BERT and N to represent NMT in the following example. </tt><br><br>
+							<p>Before we calculate PageRank, as part of the preprocessing we need to remove all self-links and combine multiple links to the same node. Our new figure will look something like this:</p>
+							<img src="/blog_images/pagerank_example.png" alt="pagerank_example" style="width: 80%"><br/>
+							<tt>Fig2. Graph after removing self-links. Note that there are no mulitple links in this example. </tt><br><br>
+							<p>Then we use the following formula to calculate the PageRank of any node u:</p>
+							$$ PR(u)= \frac{1-d}{N} + d (\Sigma \frac{PR(v)}{L(v)}) $$
+							where d is the damping factor(a value between 0.8 and 0.9), N is the total number of webpages, and v is the set of webpages that have a incoming link to u.<br/><br/>
+							<p><em>The main intuition is that PageRank is like water flowing through the network of nodes and links and getting accumulated at important nodes. Each node divides its water equally among the outgoing links. The extra factor 1-d/N represents the evaporation that allows the water to circulate among all the nodes othwerise it will get stuck at the important or sink nodes. The water at every node soon reaches the steady-state and this steady state value is called PageRank for that node.</em></p>
+							<p><strong>Step 1</strong>: Assume, PageRank of all nodes to be 1 and the dampling factor d to be 0.80. It doesn't matter what value of PageRank you start with since the PageRank values converges to the same steady-state values.  For a detailed explaination, see the reference number 2.</p>
+							
+							<div id="more_6" class="collapse">
+								<p><strong>Step 2</strong>:&nbsp; Calculate new PageRanks for individual pages-</p>
+								<ol style="list-style-type: lower-alpha;">
+									<li> \( PR(A) = \frac{1-0.8}{3} + 0.8 (\frac{PR(B)}{2}) = 0.467\) <em>[Only B has incoming link to A and B's PR is divided into two equal parts]</em></li>
+									<li>\( PR(B) = \frac{1-0.8}{3} = 0.067 \) <em>[No incoming link to B]</em></li>
+									<li>\( PR(N) = \frac{1-0.8}{3} + 0.8 (\frac{PR(A)}{1} + \frac{PR(B)}{2}) = 1.267\) <em>[B and A have incoming links to N. B's PR is divided into two parts while A's PR remains undivided]</em></li>
+								</ol>
+								<p><strong>Step 3:&nbsp;</strong>Calculate new PageRanks for the pages similar to previous step</p>
+								<ol style="list-style-type: lower-alpha;">
+									<li> \( PR(A) = \frac{1-0.8}{3} + 0.8 (\frac{PR(B)}{2}) = 0.0938\) </li>
+									<li>\( PR(B) = \frac{1-0.8}{3} = 0.067 \) </li>
+									<li>\( PR(N) = \frac{1-0.8}{3} + 0.8 (\frac{PR(A)}{1} + \frac{PR(B)}{2}) = 0.4674\) </li>
+								</ol>
+								<p><strong>Step 4:&nbsp;</strong>Calculate new PageRanks for the pages similar to previous step&nbsp;</p>
+								<ol style="list-style-type: lower-alpha;">
+									<li> \( PR(A) = \frac{1-0.8}{3} + 0.8 (\frac{PR(B)}{2}) = 0.0938\) </li>
+									<li>\( PR(B) = \frac{1-0.8}{3} = 0.067 \) </li>
+									<li>\( PR(N) = \frac{1-0.8}{3} + 0.8 (\frac{PR(A)}{1} + \frac{PR(B)}{2}) = 0.168\) </li>
+								</ol>
+								<p><strong>Step 5:&nbsp;</strong>Calculate new PageRanks for the pages similar to previous step&nbsp;</p>
+								<ol style="list-style-type: lower-alpha;">
+									<li> \( PR(A) = \frac{1-0.8}{3} + 0.8 (\frac{PR(B)}{2}) = 0.0938\) </li>
+									<li>\( PR(B) = \frac{1-0.8}{3} = 0.067 \) </li>
+									<li>\( PR(N) = \frac{1-0.8}{3} + 0.8 (\frac{PR(A)}{1} + \frac{PR(B)}{2}) = 0.168\) </li>
+								</ol>
+								<p>Since there is no more change in the values, we have reached the steady-state at step 4. Thus the PageRanks of the pages are 0.0938, 0.067, 0.168 respectively.&nbsp;</p>
+								<p>One advantage of PageRank over HITS is that PageRank is query-independent i.e one does not have to issue a query to get the resultant webpages (as root set) and start from them as was done in HITS.&nbsp;</p>
+								<p>References:</p>
+								<p>1.&nbsp;<a href="https://nlp.stanford.edu/IR-book/pdf/21link.pdf">IR Stanford</a></p>
+								<p>2.&nbsp;<a href="http://ilpubs.stanford.edu:8090/422/1/1999-66.pdf">Original paper</a></p>
+								<p>3.&nbsp;<a href="https://www.cs.cornell.edu/home/kleinber/networks-book/networks-book-ch14.pdf">Cornell</a></p>
+								<p>4.&nbsp;<a href="https://en.wikipedia.org/w/index.php?curid=14424767">By 345Kai (talk) (Uploads) - 345Kai (talk) (Uploads), Public Domain </a></p>
+								<p>&nbsp;</p>
+							</div>
+							<div class="w3-row">
+								<div class="w3-col m8 s12">
+									<p><button class="w3-button w3-padding-large w3-white w3-border" data-toggle="collapse" data-target="#more_6" onclick="new_expand(this)" id="6">READ MORE</button></p>
+								</div>
+								<div class="w3-col m4 w3-hide-small">
+									<p><button class="w3-button w3-padding-large w3-border w3-right" onclick="expandComments(this)" id="6"><b>Comments  </b></button></p>
+								</div>
+							</div>
+							<div class="w3-container utterances" id="comments_6" style="display:none;">
+								<script src="https://utteranc.es/client.js" repo="manishpatel005/manishpatel005.github.io" issue-term="pathname" theme="github-light" crossorigin="anonymous" async>
+								</script>
+							</div>
+						</div>
+					</div>
+					<hr>
+					<!-- END BLOG ENTRIES -->
+				</div>
+
+				<!-- Introduction menu -->
+				<div class="w3-col l3">
+					<!-- About Card -->
+					<div class="w3-card w3-margin w3-margin-top">
+						<!--<img src="/w3images/avatar_g.jpg" style="width:100%"> -->
+						<div class="w3-container w3-white">
+							<h4><b>Manish Patel</b></h4>
+							<p>Howdy!<br>
+								My name is Manish and I am a software engineer in Systems, Information Retrieval and Machine Learning. 
+								I completed my Masters from Texas A&amp;M where I worked on Information
+								Storage and Retrieval, Natural Language Understanding and Distributed Systems.
+								I have interned in Google Search team (Mountain View, US) and have worked in C-DOT (New Delhi, India) as Research Engineer. 
+								I did my undergrad in Computer Science from NIT-Allahabad. 
+								I love solving challenging problems in the field of algorithm design and have 7+ years of experience in algorithm design and coding.
+							</p>
+							<p>Having brought-up in various parts of India, I enjoy traveling to new
+								places and making new friends. In my free time, I love reading English
+								classics,particulary realist fiction, and playing badminton. Some of
+								my favorite books are - Anna Karenina, The Count of Monte Cristo, The
+								Picture of Dorian Gray, 1984, Les Miserables, Karmabhoomi, The Art of
+								War, Great Expectations, The Odyssey etc. In badminton, my favorite players are-
+								Lee Chong Wei, Lin Dan(sad to hear his retirement), Kento Momota,
+								PV Sindu and Victor Axelson.
+							</p>
+							<p>
+								The name of this blog --The Anvikshik-- comes from a Sanskrit word Anviskhiki which roughly means the science of searching.
+								<!--whether
+inwards(spiritual) or outwards(reasoning/logic). -->Since my interests lie in the
+								field of information retrieval, I couldn't find a better word than this to describe the blog.
+								My intention of creating this blog is to share my enthusiasm of this niche domain and encourage people to generate
+								new ideas to solve the challenging problems of today.
+							</p>
+						</div>
+					</div>
+					<hr>
+
+
+
+					<!-- Labels / tags -->
+					<div class="w3-card w3-margin">
+						<div class="w3-container w3-padding">
+							<h4>Tags</h4>
+						</div>
+						<div class="w3-container w3-white">
+							<p><span class="w3-tag w3-light-grey w3-margin-bottom">Information Retrieval</span> 
+								<span class="w3-tag w3-light-grey w3-margin-bottom">SEO</span> 
+								<span class="w3-tag w3-light-grey w3-margin-bottom">TF-IDF</span>
+								<span class="w3-tag w3-light-grey w3-margin-bottom">Vector Space</span>
+								<span class="w3-tag w3-light-grey w3-margin-bottom">BM25</span>
+								<span class="w3-tag w3-light-grey w3-margin-bottom">Hubs and Authorities</span>
+								<span class="w3-tag w3-light-grey w3-margin-bottom">HITS</span>
+								<span class="w3-tag w3-light-grey w3-margin-bottom">PageRank</span>
+								<span class="w3-tag w3-light-grey w3-margin-bottom">Google Search</span>
+								<span class="w3-tag w3-light-grey w3-margin-bottom">Recommder Systems</span>
+								<!--<span class="w3-tag w3-light-grey w3-small w3-margin-bottom"><img src="https://hitcounter.pythonanywhere.com/count/tag.svg" alt="Hits"></span>
+-->
+							</p>
+						</div>
+					</div>
+
+					<!-- END Introduction Menu -->
+				</div>
+
+				<!-- END GRID -->
+			</div><br>
+
+			<!-- END w3-content -->
+		</div>
+
+		<!-- Footer -->
+		<footer class="w3-container w3-dark-grey w3-padding-32 w3-margin-top">
+			<button class="w3-button w3-black w3-padding-large w3-margin-bottom" onclick="location.href='./blog.html'" type="button">Previous</button>
+			<button class="w3-button w3-black w3-disabled w3-padding-large w3-margin-bottom">Next »</button>
+			<!--<p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p> -->
+		</footer>
+
+		<script>
+
+			function new_expand(button){
+				var id = button.id;
+				// Toggle button text
+				var btnElem = document.getElementById(id);
+
+				if (btnElem.innerHTML === "READ MORE"){
+					btnElem.innerHTML = "READ LESS";
+				} else {
+					btnElem.innerHTML = "READ MORE";
+				}
+
+			}
+
+			function expandComments(button) {
+				var id = button.id;
+				var comments_id = 'comments_' + id;
+				var moreComments = document.getElementById(comments_id);
+
+				if (moreComments.style.display === "none") {
+					moreComments.style.display = "block";
+				} else {
+					moreComments.style.display = "none";
+				}
+			}
+
+
+		</script>
+	</body>
+
+</html>
