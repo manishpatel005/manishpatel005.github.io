@@ -438,17 +438,32 @@ and is wrapped around the whole page content, except for the footer in this exam
 						<img src="/blog_images/hubs_cover.png" alt="Hubs and Auth cover" style="width:100%">
 						<div class="w3-container">
 							<h3><b>Information Storage and Retrieval-5</b></h3>
-							<h5>Hubs and Authorities- HITS Algorithm, <span class="w3-opacity">September 20, 2020</span></h5>
+							<h5>Hubs and Authorities- <a href="http://pi.math.cornell.edu/~mec/Winter2009/RalucaRemus/Lecture4/lecture4.html">HITS Algorithm</a>, <span class="w3-opacity">September 20, 2020</span></h5>
 						</div>
 
 						<div class="w3-container">
 
-							<p>Imagine you are developing a search engine for a digital library such as IEEE Explore or arxiv and a user submits a query&nbsp;- <span style="color: #ff0000;">What is attention</span> ? </p>
-							<p>If you have worked in NLP or machine learning you might have heard of this mechanism called <strong>Attention</strong> introduced by <a href="https://arxiv.org/abs/1706.03762">Vaswani et al</a>, in his ground-breaking research paper-&nbsp;<strong>Attention is all you need-&nbsp;</strong>NeurIPS 2017. It was such an important concept that it changed the course of Neural Machine Translation (and of NLP ) and led to neural architecture such as Transformers, and Bidirectional Transformers(BERT) etc. See this blog post by <a href="https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/">Jay Alammar</a> for an amazing explaination on how attention works. </p>
-							<p>Now if you make a simple text based search on all the papers in the library, you will get like million documents containing the term "attention" as it's such a common word. If you make a tf-idf based search then the original paper by Vaswani will get even lower score than the review paper by&nbsp; <a href="https://arxiv.org/pdf/1902.02181.pdf">Galassi</a> as the former have used the term attention only 97 times as opposed to the latter who have used it more than 400 times.&nbsp;</p>
-							<p>So the question i<em>s: how to figure out who is the authentic source of this mechanism called Attention?&nbsp;</em>It turns out that in this network structure of linked environment i.e. if paper A cites paper B then it can be deemed as a link from paper A to paper B, one can use PageRank or HITS algorithm. HITS algorithm was developed by Prof. Jon Kleinberg at Cornell University at the same time when PageRank was developed by Larry and Sergey at Stanford. Let's see how how HITS works.</p>
-							<p><strong>Hyperlink-induced Topic Search</strong> (HITS) is an approach to discover the authoritative sources in context of World Wide Web (www) where the number of pages is enormous and is linked to each other by hyperlinks (incoming and outgoing). But this approach could also be used for the linked structure discussed above.&nbsp;</p>
-							<p><strong>Authorative sources</strong> mean the sources which provide valuable information on the subject and has been considered as the "authority" by others due to its virtue of originality or popularity. For example, for a query on "<em>Texas A&amp;M University"</em>, the homepage of Texas A&amp;M can be considered as the authority.&nbsp; Pages of goverment websites might also be considered as the authorities for the query. These are the pages truly relevant to the given query and are expected by the users from the search engine.</p>
+							<p>Imagine you are developing a search engine for a digital library such as IEEE Explore or arxiv and a user submits a query&nbsp;- 
+							<span style="color: #ff0000;">What is attention</span> ? </p>
+							<p>If you have worked in NLP or machine learning you might have heard of this mechanism called <strong>Attention</strong> introduced by 
+							<a href="https://arxiv.org/abs/1706.03762">Vaswani et al</a>, in his ground-breaking research paper-&nbsp;<strong>Attention is all you need-&nbsp;</strong>
+							NeurIPS 2017. It was such an important concept that it changed the course of Neural Machine Translation (and of NLP ) and led to neural architecture such as 
+							Transformers, and Bidirectional Transformers(BERT) etc. See this blog post by 
+							<a href="https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/">Jay Alammar</a> for an amazing 
+							explaination on how attention works. </p>
+							<p>Now if you make a simple text based search on all the papers in the library, you will get like million documents containing the term "attention" as it's 
+							such a common word. If you make a tf-idf based search then the original paper by Vaswani will get even lower score than the review paper by&nbsp; 
+							<a href="https://arxiv.org/pdf/1902.02181.pdf">Galassi</a> as the former have used the term attention only 97 times as opposed to the latter who have used it 
+							more than 400 times.&nbsp;</p>
+							<p>So the question i<em>s: how to figure out who is the authentic source of this mechanism called Attention?&nbsp;</em>It turns out that in this network 
+							structure of linked environment i.e. if paper A cites paper B then it can be deemed as a link from paper A to paper B, one can use PageRank or HITS algorithm. 
+							HITS algorithm was developed by Prof. Jon Kleinberg at Cornell University at the same time when PageRank was developed by Larry and Sergey at Stanford. 
+							Let's see how how HITS works.</p>
+							<p><strong>Hyperlink-induced Topic Search</strong> (<a href="http://pi.math.cornell.edu/~mec/Winter2009/RalucaRemus/Lecture4/lecture4.html">HITS</a>) is an 
+							approach to discover the authoritative sources in context of World Wide Web (www) where the number of pages is enormous and is linked to each other by 
+							hyperlinks (incoming and outgoing). But this approach could also be used for the linked structure discussed above.&nbsp;</p>
+							<p><strong>Authorative sources</strong> mean the sources which provide valuable information on the subject and has been considered as the "authority" by others due to its virtue of originality or popularity. 
+							For example, for a query on "<em>Texas A&amp;M University"</em>, the homepage of <a href="https://www.tamu.edu/" >Texas A&amp;M</a> can be considered as the authority.&nbsp; Pages of goverment websites might also be considered as the authorities for the query. These are the pages truly relevant to the given query and are expected by the users from the search engine.</p>
 							<p>However, there is another category of the pages called <strong>hubs</strong>, whose role is to advertise the authoritative pages i.e. they contain links to "authority" pages and help the search engine move in the right direction. For example, "usnews.com" and "timeshighereducation.com" - the sites that ranks the schools can be considered as hubs.&nbsp; </p>
 
 							<p>Thus,</p>
