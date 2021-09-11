@@ -404,28 +404,27 @@ and is wrapped around the whole page content, except for the footer in this exam
 							<p>For the query- "what is attention", we would have a network graph like this:</p>
 
 							<img src="/blog_images/hubs_and_auth.png" alt="hubs_and_authority_example" style="width: 60%"> <br>
-							<p>The idea behind HITS algorithm is to find out the good hubs and authorities for a topic by assigning two numbers to a page: hub score and authority score. To start with something, we first do a regular keyword search for the topic and call the search result as&nbsp;<strong>root set.</strong>&nbsp;Typically, it consists of 200 to 1000 nodes.&nbsp; </p>
-							<img src="/blog_images/root_base_set.png" alt="root_and_base_set" style="width: 60%"> <br>
-							<tt>Fig1. Root set consists of examples from original query while base set consists of root set + incoming and outgoing links</tt><br><br>
-							<p>Then we find all the nodes that are either pointed by the root set or points to the root set. This we call as <strong>base set</strong>( it includes the root set). Typically, it consists of around 5000 nodes.&nbsp;</p>
-							<p>Next we do the following:</p>
-							<ol>
-								<li>For each page x in the base set:</li>
-								<li>Initiliaze x: hub(x) := 1 and auth(x) := 1</li>
-								<li>Repeat the following update until convergence:
-									<ul>
-										<li style="text-align: left;">hub(x) := &sum; auth(x')&nbsp; (where x' is pointed by x)</li>
-										<li style="text-align: left;">auth(x) = &sum; hub(x')&nbsp;&nbsp; (where x' points to x)</li>
-										<li style="text-align: left;">Scale down or normalize the hub(x) and auth(x) by l2 norm (square root of sum of squares)</li>
-									</ul>
-									<img src="/blog_images/combine_hub_auth.png" alt="combine_hubs_and_authority_example" style="width: 80%"> <br>
-								</li>
-								<li>After convergence, the pages with highest hub scores will be the top hubs while the page with highest auth scores will be the top authorities.</li>
-							</ol>
+							<div id="more_5" class="collapse">
+								<p>The idea behind HITS algorithm is to find out the good hubs and authorities for a topic by assigning two numbers to a page: hub score and authority score. To start with something, we first do a regular keyword search for the topic and call the search result as&nbsp;<strong>root set.</strong>&nbsp;Typically, it consists of 200 to 1000 nodes.&nbsp; </p>
+								<img src="/blog_images/root_base_set.png" alt="root_and_base_set" style="width: 60%"> <br>
+								<tt>Fig1. Root set consists of examples from original query while base set consists of root set + incoming and outgoing links</tt><br><br>
+								<p>Then we find all the nodes that are either pointed by the root set or points to the root set. This we call as <strong>base set</strong>( it includes the root set). Typically, it consists of around 5000 nodes.&nbsp;</p>
+								<p>Next we do the following:</p>
+								<ol>
+									<li>For each page x in the base set:</li>
+									<li>Initiliaze x: hub(x) := 1 and auth(x) := 1</li>
+									<li>Repeat the following update until convergence:
+										<ul>
+											<li style="text-align: left;">hub(x) := &sum; auth(x')&nbsp; (where x' is pointed by x)</li>
+											<li style="text-align: left;">auth(x) = &sum; hub(x')&nbsp;&nbsp; (where x' points to x)</li>
+											<li style="text-align: left;">Scale down or normalize the hub(x) and auth(x) by l2 norm (square root of sum of squares)</li>
+										</ul>
+										<img src="/blog_images/combine_hub_auth.png" alt="combine_hubs_and_authority_example" style="width: 80%"> <br>
+									</li>
+									<li>After convergence, the pages with highest hub scores will be the top hubs while the page with highest auth scores will be the top authorities.</li>
+								</ol>
 
-							<p style="text-align: left;">Let us take a small example to understand how it works:</p>
-
-							<div id="more_5" class="collapse"></div>
+								<p style="text-align: left;">Let us take a small example to understand how it works:</p>
 
 								<img src="/blog_images/hits_example.png" alt="hits_example" style="width: 100%"> <br>
 								<tt>Fig2. Linked structure graph. We assign A to represent attention, B to represent BERT and N to represent NMT in the following example. </tt><br><br>
