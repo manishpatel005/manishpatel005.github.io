@@ -46,11 +46,63 @@ and is wrapped around the whole page content, except for the footer in this exam
 				<!-- Blog entries -->
 				<div class="w3-col l9 s12">
 					
+                    <!-- Blog entry -->
+					<div class="w3-card-4 w3-margin w3-white">
+						<div class="w3-container">
+							<h3><b><a href="https://www.wikihow.com/Build-a-Robot-at-Home">Obstacle Avoiding Robot</a> </b></h3>
+							<h5><span class="w3-opacity">February 16, 2022</span></h5>
+						</div>
+
+						<div class="w3-container">
+							<p>
+								Obstacle avoiding robot is a robot that could move around freely by avoiding the obstacles. 
+                                There are a lot of tutorials on the internet that you could lookup to create one yourself. However, If I had to recommend,
+                                I would say <a href="https://dronebotworkshop.com/tb6612fng-h-bridge/" > dronebotworkshop </a>is one of the best.
+                                The main reason I have created this post is to share the mistakes I did so that you don't repeat it. Let's start. <br><br>
+                                <img src="/blog_images/robot.jpg" alt="obstacle_avoiding_robot" style="width: 90%">
+                                <ul>
+                                    <li>Mistake 1: Servo motors vs DC motors</li>
+                                    I thought initally both are motors and could be used interchangeably but I was wrong. Servo motors are precision-based motors that don't rotate more than 180 degress and are used as robotic limbs, rudder control or for car-wiper kind of movement. Although you can do some adjustments (like removing potentiometer) to create a continuous rotating servo motors but it is very hard. Also, it is hard to find continuous rotating servo motors. <br><br>
+                                    
+                                    DC motors or battery-operated DC motors, on the other hand, can rotate continuosly and are used as wheels of cars etc. <br>
+                                    There are another kind of motors called Stepper motors that are like fine-tuned servo motors and are used for 3d printer kind of situations. <br><br>
+                                    
+                                    So use a battery operated DC motors for a robot that needs to rotate continuosly. I used DC motors with voltage range 3~6 V. Remember more the volatage required for a motor, more the voltage is needed in a battery. <br><br>
+                                    
+                                    <li> Mistake 2: L298N module vs TB6612FNG module</li>
+                                    There are a lot of tutorials with L298N module and it's very easily available as well. Initially, I used L298N module to drive the motors.  It was working great but after some time the motors would start to slow down and eventually stop. There was only some noise but motors wouldn't work. Replaced it with new battery and same thing happened again. I did a digup on the internet and found that L298N module has very poor efficieny(around 45%) and it is dropping the voltage really quick. So as a hack, I powered the logic with arduino's 5v but still it wouldn't work for long. <br><br>
+                                    I searched and found about another H bridge circuit-TB6612FNG. It's a really awesome module and I would advise you to use it rather than L298N module. It has very high efficieny(around 95%) and it can provide constant volatage/current to the motors. <br><br>
+                                    
+                                    <li> Mistake 3: Not soldering module</li>
+                                    The TB6612FNG module comes with male header pins that are not soldered. I thought I could insert it into breadboard using the pins and it should work. But it didn't. So I had to solder it to make it work. I guess this was a silly mistake when I look back. But then  that's the part of learning.
+                            
+                                </ul>
+                                The whole experience of making the robot was very valuable. I wish I would have done it earlier. My next plan is to make quadcopters.
+                                
+								
+								</span>
+							</p>
+							<div class="w3-row">
+								<div class="w3-col m8 s12">
+									<p><!-- <button class="w3-button w3-padding-large w3-white w3-border" onclick="expandRead(this)" id="2"><b>READ MORE »</b></button>--></p>
+								</div>
+								<div class="w3-col m4 w3-hide-small">
+									<p><button class="w3-button w3-padding-large w3-border w3-right" onclick="expandComments(this)" id="2"><b>Comments  </b></button></p>
+								</div>
+							</div>
+							<div class="w3-container utterances" id="comments_2" style="display:none;">
+								<script src="https://utteranc.es/client.js" repo="manishpatel005/manishpatel005.github.io" issue-term="pathname" theme="github-light" crossorigin="anonymous" async>
+								</script>
+							</div>
+						</div>
+					</div>
+
+                    
 					<!-- Blog entry -->
 					<div class="w3-card-4 w3-margin w3-white">
 						<!--<img src="/blog_images/ir_1_shakespeare.jpg" alt="Norway" style="width:100%"> -->
 						<div class="w3-container">
-							<h3><b><a href="https://en.wikipedia.org/wiki/Boolean_model_of_information_retrieval">Boolean Retrieval.</a></b></h3>
+							<h3><b><a href="https://en.wikipedia.org/wiki/Boolean_model_of_information_retrieval">Boolean Retrieval</a></b></h3>
 							<h5><span class="w3-opacity">August 05, 2020</span></h5>
 						</div>
 
@@ -688,12 +740,12 @@ and is wrapped around the whole page content, except for the footer in this exam
 							<h4><b>Manish Patel</b></h4>
 							<p>Howdy!<br>
 								My name is Manish and I am a software engineer in <a href="https://en.wikipedia.org/wiki/Computer_science#Computer_systems_and_computational_processes">Systems,</a> 
-								<a href="https://en.wikipedia.org/wiki/Information_retrieval">Information Retrieval</a> and <a href="https://en.wikipedia.org/wiki/Machine_learning">Machine Learning</a>. 
-								I completed my Masters from Texas A&amp;M where I worked on Information
-								Storage and Retrieval, Natural Language Understanding and Distributed Systems.
-								I have interned in Google Search team (Mountain View, US) and have worked in C-DOT (New Delhi, India) as Research Engineer. 
-								I did my undergrad in Computer Science from NIT-Allahabad. 
-								I love solving challenging problems in the field of algorithm design and have 7+ years of experience in algorithm design and coding.
+								and <a href="https://en.wikipedia.org/wiki/Information_retrieval">Information Retrieval</a>.
+								I completed my Masters from Texas A&amp;M, US and  undergrad from NIT-Allahabad, India. <br>
+                                Having brought-up in various parts of India, I enjoy traveling to new
+								places and making new friends. In my free time, I love reading English
+								classics,particulary realist fiction, and playing badminton.
+								
 							</p>
 							<!--<p>Having brought-up in various parts of India, I enjoy traveling to new
 								places and making new friends. In my free time, I love reading English
@@ -703,13 +755,14 @@ and is wrapped around the whole page content, except for the footer in this exam
 								War, Great Expectations, The Odyssey etc. In badminton, my favorite players are-
 								Lee Chong Wei, Lin Dan(sad to hear his retirement), Kento Momota,
 								PV Sindu and Victor Axelson.
-							</p> -->
-							<p>
-								The name of this blog --The Anvikshik-- comes from a Sanskrit word Anviskhiki which roughly means the science of searching.
-								Since my interests lie in the
+                                Since my interests lie in the
 								field of information retrieval, I couldn't find a better word than this to describe the blog.
 								My intention of creating this blog is to share my enthusiasm and encourage people to generate
 								new ideas to solve the challenging problems of today.
+                                I love solving challenging problems and reading classics. 
+							</p> -->
+							<p>
+								The name of this blog --The Anvikshik-- comes from a Sanskrit word Anviskhiki which roughly means the science of searching.
 							</p>
 						</div>
 					</div>
@@ -763,6 +816,8 @@ and is wrapped around the whole page content, except for the footer in this exam
 								<span class="w3-tag w3-light-grey w3-margin-bottom">PageRank</span>
 								<span class="w3-tag w3-light-grey w3-margin-bottom">Google Search</span>
 								<span class="w3-tag w3-light-grey w3-margin-bottom">Recommder Systems</span>
+                                <span class="w3-tag w3-light-grey w3-margin-bottom">Obstacle Avoiding Robot</span>
+                                <span class="w3-tag w3-light-grey w3-margin-bottom">Correlation vs Causation</span>
 								<!--<span class="w3-tag w3-light-grey w3-small w3-margin-bottom"><img src="https://hitcounter.pythonanywhere.com/count/tag.svg" alt="Hits"></span>
 -->
 							</p>
