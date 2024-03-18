@@ -49,6 +49,152 @@ and is wrapped around the whole page content, except for the footer in this exam
                     
                     <!-- Blog entry -->
 					<div class="w3-card-4 w3-margin w3-white">
+						
+						<div class="w3-container">
+							<h3><b>Mapping of object oriented classes to relational tables</b></h3>
+							<h5><span class="w3-opacity">March 14, 2024</span></h5>
+						</div>
+
+						<div class="w3-container">
+                            
+							<p>
+								If you are a software engineer, then you would probably have gone through low-level design (LLD) interviews where you are asked to design
+                                the low-level components of a system and model the databases and APIs for it. <br>
+                                For example, designing a stackoverflow system is a common (LLD) question.  <br><br><br>
+                                <img src="/blog_images/stackoverflow.png" alt="stackoverflow" style="width: 90%"> <br> <br> <br>
+                                However, have you felt that once you got the class design figured out, creating relational tables is not an easy task. There is something that does not feel right. <br>
+                                
+                                For instance, say a <b> User </b> can vote(upvote/downvote) a <b> Question </b> and this has M:N relationship
+                                i.e 1 user can vote many questions and one question can be voted by many users. How would you model this as relational tables? 
+                                <br> <br> <br>
+                                Would you create one 'User' table and add 'question_vote' as a column in it and then add a json string as value:
+                                
+                                <code>
+                                "{ "question_id1": "upvote", "question_id2": "downvote", "question_id3": "none"} , ... }"
+                                </code>
+                                
+                                 ? But then querying this table to check if the current user has voted the current question would require loading up entire json string and parsing it.  <br> <br> Another option would be to have multi-valued attributes but that would mean denormalized database which makes querying much harder. What is the going on here ?<span id="dots_6">??</span><span id="more_6"> 
+                                <br> <br>
+                                This issue that we are facing is called <b>impedance mismatch</b>. A term borrowed from electrical engineering, imepedance mismatch means that the two components of system have different structure and thus cannot seamlessely integrate with each other. In this OOD to relational mapping, this happens because both paradigms are based on different principles. OO design  is based on software engineering principles while Relational design is based on mathematical principles. Thus we would need
+                                a way to map components from one paradigm to another.
+                                Let's see how we can do this component by component.  Let's take the simple UML diagram as shown under: 
+                                <img src="/blog_images/stackoverflow_uml.png" alt="stackoverflow_uml" style="width: 90%"> <br> <br> <br>
+                                
+                                <b> How to map classes </b> <br>
+                                Classes can be mapped directly to tables with attributes being mapped to columns. 
+                                For e.g. table for Member would look something like this: <br>
+                                
+                               
+Member <br>
+------------------------------------------------------------- <br>
+member_id | name | username | email | image | ... <br><br><br>
+
+
+                            <b> How to map inheritance i.e "is-a" relationship </b> <br>
+                                There are actually three ways we could model the inheritance relationship.  <br>
+                                1. <b>Map entire hierarchy to one table </b><br>
+                                We can map the entire hierarchy to one table and the individual types can be modeled as types. For e.g, the Member hierarchy can be modeled as:<br>
+Member <br>
+------------------------------------------------------------- <br>
+member_id | name | username | email | image | member_type_id <br>
+------------------------------------------------------------- <br>
+   1      |  John | john23 | john@gmail.com | 'default.jpg' | 2    <br><br><br>
+                                
+                                
+Member_type <br>
+------------------------------------------------------------- <br>
+type_id | type_name <br>
+------------------------------------------------------------- <br>
+1       |      User <br>
+2       |      Moderator <br> <br> <br>
+                
+                                The advantage of this approach is that it is easy to implement and very easy to add new types. Say, if we have an 'admin'
+                                type tomorrow, then we can add a new type in Member_type table and just start using it. <br>
+                                The disadvantage is that classes are highly coupled. This means that changing/adding attributes in one class affects another. For e.g if we want 'moderators' to have 'payment_id' attribute then we need to add this to Member table. But this would expose it to 'users' as  well who should not know about it. Thus we are voilating the "principle of least priviledge" . <br><br><br>
+                                
+                                2. <b>Map each concrete class to its own table</b><br>
+                                We can create tables for each concrete class. For e.g. we can have following tables in DB: <br>
+User <br>
+------------------------------------------------------------- <br>
+user_id | name | username | email | image                     <br>
+------------------------------------------------------------- <br>
+   1      |  John | john23 | john@gmail.com | 'default.jpg'  <br><br><br>
+                                
+Moderator <br>
+------------------------------------------------------------- <br>
+moderator_id | name | username | email | image                     <br>
+------------------------------------------------------------- <br>
+   1      |  Alice | alice1 | alice@gmail.com | 'default.jpg'  <br><br><br>
+                                
+                                
+                                The advantage of this approach is that all data of a class is stored at one place thus making reads/writes faster. <br>
+                                The disadvantage is that if an attribute is changed in base class, then we need to update the same in derived classes
+                                as well.  <br><br><br>
+                                
+                                3. <b>Map each class to its own table</b> <br>
+                                We can create one table for each class. For e.g we can have following tables in DB: <br>
+Member <br>
+------------------------------------------------------------- <br>
+member_id(PK) | name | username | email | image                     <br>
+------------------------------------------------------------- <br>
+   1      |  John | john23 | john@gmail.com | 'default.jpg'  <br>
+   2      |  Alice | alice1 | alice@gmail.com | 'default.jpg'<br> <br><br>
+                                
+User <br>
+------------------------------------------------------------- <br>
+member_id(FK) | user_specific_attrs                     <br>
+------------------------------------------------------------- <br>
+   1      |    ...            <br><br><br>
+                                
+Moderator <br>
+------------------------------------------------------------- <br>
+member_id(FK) |moderator_specific_attrs                       <br>
+------------------------------------------------------------- <br>
+   2   |    ... <br><br><br>                              
+                                
+                                The advantage of this approach is that we don't need to update derived class table if there is change in base class table.
+                                Another advantage is that there can be overlapping roles i.e same user can also be a moderator. This was not handled
+                                in previous two approaches.<br>
+                                The disadvantage is that data is now distributed. Need to make joins to collect information for same user. <br><br><br>
+                                
+                                 <b> How to map relationships (1:1, 1:N, M:N) </b> <br>
+                                    <b> Mapping 1:1 relationship</b> <br>
+                                    Mapping 1:1 relationship is the simplest as we can simply use the primary_key of one table as the foreign key in another. <br>
+                                    For instance, in the Stats table, we can use member_id as the foreign key, thus linking a user to its stat. We could done the other way as well i.e have a stats_id as foreign key in the Member table.  <br><br>
+                                
+                                    <b> Mapping 1:N relationship</b>
+                                    We can use the foreign key in the table where we can have only 1 instance of the other. For e.g. 1 question can have many answers but 1 answer is associated with only 1 question. Thus, it makes sense to have 'question_id' as the foreign
+                                key in the Answer table. <br><br>
+                                
+                                    <b> Mapping M:N relationship</b>
+                                    The best approach to map a many-to-many relationship is to use an associative table which uses the primary keys of both
+                                the tables. For e.g, we can create a table called 'MemberQuestion' which contains member_id, question_id and vote as the columns. This way we can find all the questions voted by a given member and how many votes has been received by a given question. <br><br>
+MemberQuestion <br>
+------------------------------------------------------------- <br>
+member_id(FK) |question_id(FK) | vote                         <br>
+------------------------------------------------------------- <br>
+   1  |    1 |  upvote                                  <br><br><br> 
+                                
+                                
+                                </span>
+							</p>
+							<div class="w3-row">
+								<div class="w3-col m8 s12">
+									<p><button class="w3-button w3-padding-large w3-white w3-border" onclick="expandRead(this)" id="6"><b>READ MORE »</b></button></p>
+								</div>
+								<div class="w3-col m4 w3-hide-small">
+									<p><button class="w3-button w3-padding-large w3-border w3-right" onclick="expandComments(this)" id="6"><b>Comments  </b></button></p>
+								</div>
+							</div>
+							<div class="w3-container utterances" id="comments_6" style="display:none;">
+								<script src="https://utteranc.es/client.js" repo="manishpatel005/manishpatel005.github.io" issue-term="pathname" theme="github-light" crossorigin="anonymous" async>
+								</script>
+							</div>
+						</div>
+					</div>
+                    
+                    <!-- Blog entry -->
+					<div class="w3-card-4 w3-margin w3-white">
 						<!--<img src="/blog_images/ir_1_shakespeare.jpg" alt="Norway" style="width:100%"> -->
 						<div class="w3-container">
 							<h3><b>Inference of llama2 on 4GB GPU </b></h3>
@@ -67,7 +213,9 @@ and is wrapped around the whole page content, except for the footer in this exam
                                 
                                 Although you can use Google Colab with T4 GPU(16GB RAM) on 7B model using quantization, but soon you would find that Google kicks you out because you have been using too much GPU. <br><br>
                                 
-                                Is there a way we can use the commodity GPU with 4GB ram for the inference ? Turns out that we can. Let's see how we can do this. <br> <br>
+                                Is there a way we can use the commodity GPU with 4GB ram for the inference ? <span id="dots_5">...</span><span id="more_5">
+                                
+                                Turns out that we can. Let's see how we can do this. <br> <br>
                                 
                                 <b>Layer-wise inference </b> <br>
                                 <img src="/blog_images/transformer_layers.png" alt="transformer layers" style="width: 30%"> <br><br>
@@ -111,13 +259,13 @@ output = model.tokenizer.decode(generation_output.sequences[0])
 print(output)
                                 </code>
                                 </pre>
-                                
+                                </span>
 							<div class="w3-row">
 								<div class="w3-col m8 s12">
-									<p><button class="w3-button w3-padding-large w3-white w3-border" onclick="expandRead(this)" id="1"><b>READ MORE »</b></button></p>
+									<p><button class="w3-button w3-padding-large w3-white w3-border" onclick="expandRead(this)" id="5"><b>READ MORE »</b></button></p>
 								</div>
 								<div class="w3-col m4 w3-hide-small">
-									<p><button class="w3-button w3-padding-large w3-border w3-right" onclick="expandComments(this)" id="1"><b>Comments  </b></button></p>
+									<p><button class="w3-button w3-padding-large w3-border w3-right" onclick="expandComments(this)" id="5"><b>Comments  </b></button></p>
 								</div>
 							</div>
 							<div class="w3-container utterances" id="comments_1" style="display:none;">
@@ -135,12 +283,14 @@ print(output)
 						</div>
 
 						<div class="w3-container">
+                            <img src="/blog_images/robot.jpg" alt="obstacle_avoiding_robot" style="width: 90%"> <br> <br>
 							<p>
 								Obstacle avoiding robot is a robot that could move around freely by avoiding the obstacles. 
                                 There are a lot of tutorials on the internet that you could lookup to create one yourself. However, If I had to recommend,
                                 I would say <a href="https://dronebotworkshop.com/tb6612fng-h-bridge/" > dronebotworkshop </a>is one of the best.
                                 The main reason I have created this post is to share the mistakes I did so that you don't repeat it. Let's start. <br><br>
-                                <img src="/blog_images/robot.jpg" alt="obstacle_avoiding_robot" style="width: 90%">
+                                
+                               
                                 <ul>
                                     <li>Mistake 1: Servo motors vs DC motors</li>
                                     I thought initally both are motors and could be used interchangeably but I was wrong. Servo motors are precision-based motors that don't rotate more than 180 degress and are used as robotic limbs, rudder control or for car-wiper kind of movement. Although you can do some adjustments (like removing potentiometer) to create a continuous rotating servo motors but it is very hard. Also, it is hard to find continuous rotating servo motors. <br><br>
@@ -160,13 +310,13 @@ print(output)
                                 </ul>
                                 The whole experience of making the robot was very valuable. I wish I would have done it earlier. My next plan is to make quadcopters.
                                 
-								
+                                <!-- README more doesn't work because of ul-->
 							<div class="w3-row">
 								<div class="w3-col m8 s12">
-									<p><!-- <button class="w3-button w3-padding-large w3-white w3-border" onclick="expandRead(this)" id="2"><b>READ MORE »</b></button>--></p>
+									<p> </p>
 								</div>
 								<div class="w3-col m4 w3-hide-small">
-									<p><button class="w3-button w3-padding-large w3-border w3-right" onclick="expandComments(this)" id="2"><b>Comments  </b></button></p>
+									<p><button class="w3-button w3-padding-large w3-border w3-right" onclick="expandComments(this)" id="6"><b>Comments  </b></button></p>
 								</div>
 							</div>
 							<div class="w3-container utterances" id="comments_2" style="display:none;">
@@ -826,20 +976,7 @@ print(output)
 								classics,particulary realist fiction, and playing badminton.
 								
 							</p>
-							<!--<p>Having brought-up in various parts of India, I enjoy traveling to new
-								places and making new friends. In my free time, I love reading English
-								classics,particulary realist fiction, and playing badminton. Some of
-								my favorite books are - Anna Karenina, The Count of Monte Cristo, The
-								Picture of Dorian Gray, 1984, Les Miserables, Karmabhoomi, The Art of
-								War, Great Expectations, The Odyssey etc. In badminton, my favorite players are-
-								Lee Chong Wei, Lin Dan(sad to hear his retirement), Kento Momota,
-								PV Sindu and Victor Axelson.
-                                Since my interests lie in the
-								field of information retrieval, I couldn't find a better word than this to describe the blog.
-								My intention of creating this blog is to share my enthusiasm and encourage people to generate
-								new ideas to solve the challenging problems of today.
-                                I love solving challenging problems and reading classics. 
-							</p> -->
+							
 							<p>
 								The name of this blog --The Anvikshik-- comes from a Sanskrit word Anviskhiki which roughly means the science of searching.
 							</p>
